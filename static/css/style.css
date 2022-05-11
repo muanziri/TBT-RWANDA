@@ -1166,6 +1166,7 @@ fieldset[disabled] .s-btn {
   height: auto;
   display: table;
   padding: .75rem 1.875rem;
+  z-index: -1;
 }
 
 .s-header__container:before,
@@ -2374,6 +2375,7 @@ fieldset[disabled] .s-btn {
   overflow: hidden;
 }
 
+
 /* Arrows v1
 ------------------------------ */
 .s-swiper__arrow-v1--left,
@@ -2390,6 +2392,17 @@ fieldset[disabled] .s-btn {
   width: auto;
   padding: 10px 18px;
   background-color: #f44336;
+}
+
+.newsClass {
+  width: 45%;
+  height: 260px;
+  background-color: red;
+  margin-bottom: 5px;
+  margin-left: 15px;
+  margin-top: 15px;
+  display: flex;
+  flex-direction: row;
 }
 
 /* Center the image and position the close button */
@@ -2413,7 +2426,7 @@ fieldset[disabled] .s-btn {
   /* Hidden by default */
   position: fixed;
   /* Stay in place */
-  z-index: 1;
+  z-index: 2;
   /* Sit on top */
   left: 0;
   top: 0;
@@ -2423,40 +2436,75 @@ fieldset[disabled] .s-btn {
   /* Full height */
   overflow: auto;
   /* Enable scroll if needed */
-  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.842);
   /* Fallback color */
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.733);
   /* Black w/ opacity */
   padding-top: 60px;
+  
 }
-#adsense{
+
+#buttonChanger {
+  border-radius: 15px;
+  border-color: rgba(255, 255, 255, 0);
+  color: white;
+  background-color: rgb(94, 39, 0);
+  width: 20%;
+  height: 100%;
+  margin-left: 2%
+}
+
+#buttonChanger1 {
+  border-radius: 15px;
+  border-color: rgba(255, 255, 255, 0);
+  color: white;
+  background-color: rgb(94, 39, 0);
+  width: 20%;
+  height: 100%;
+  margin-left: 20%
+}
+
+#buttonChanger2 {
+  border-radius: 15px;
+  border-color: rgba(255, 255, 255, 0);
+  color: white;
+  background-color: rgb(94, 39, 0);
+  width: 20%;
+  height: 100%;
+  margin-left: 16%
+}
+
+#adsense {
   position: fixed;
   right: 2px;
   top: 33%;
-  height:60%;
-  width: 25%;
+  height: 60%;
+  width: 20%;
   background-color: #000;
-  z-index:-2;
+  z-index: -2;
 
 
 }
-#ChangeOnMobile {
+
+.ChangeOnMobile {
   width: 80%;
   height: fit-content;
   background-color: white;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  margin-bottom: 10%;
 
 }
 
 /* Modal Content/Box */
 .modal-content {
   background-color: #fefefe;
-  margin: 5% auto 15% auto;
+  margin: 0% auto 15% auto;
   /* 5% from the top, 15% from the bottom and centered */
   border: 1px solid #888;
   width: 80%;
+  height: fit-content;
   /* Could be more or less, depending on screen size */
 }
 
@@ -2468,6 +2516,11 @@ fieldset[disabled] .s-btn {
   color: #000;
   font-size: 35px;
   font-weight: bold;
+}
+
+#Onews {
+  width: 50vw;
+  background-color: rgba(255, 255, 255, 0);
 }
 
 .close:hover,
@@ -2492,7 +2545,8 @@ fieldset[disabled] .s-btn {
   }
 }
 
-@media screen and (max-width: 300px) {
+@media screen and (max-width: 400px) {
+
   span.psw {
     display: block;
     float: none;
@@ -2520,6 +2574,60 @@ fieldset[disabled] .s-btn {
 }
 
 @media (max-width: 47.9em) {
+  #Onews {
+    width: 200px;
+    background-color: white;
+  }
+  .newsClass {
+    width: 100%;
+    height: 250px;
+    background-color: red;
+    margin-bottom: 5px;
+    margin-left: 0px;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: row;
+  }
+
+  #buttonChanger {
+    border-radius:15px 0px  0px 15px ;
+    border-color: rgba(255, 255, 255, 0);
+    color: white;
+    background-color: rgb(94, 39, 0);
+    width: 30%;
+    height: 100%;
+    margin-left: 3%;
+  }
+
+  .ChangeOnMobile {
+    display: flex;
+    flex-direction: column;
+    width: 100%
+  }
+
+  #adsense {
+    display: none;
+  }
+
+  #buttonChanger1 {
+    border-radius: 0;
+    border-color: rgba(255, 255, 255, 0);
+    color: white;
+    background-color: rgb(94, 39, 0);
+    width: 30%;
+    height: 100%;
+    margin-left: 0;
+  }
+
+  #buttonChanger2 {
+    border-radius: 0px 15px 15px 0px;
+    border-color: rgba(255, 255, 255, 0);
+    color: white;
+    background-color: rgb(94, 39, 0);
+    width: 30%;
+    height: 100%;
+    margin-left: 0;
+  }
 
   .s-swiper:hover .s-swiper__arrow-v1--left,
   .s-swiper:hover .s-swiper__arrow-v1--right {

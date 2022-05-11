@@ -12,8 +12,8 @@ app.get('/',(req,res)=>{
 app.get('/podcast',(req,res)=>{
     res.render('podcast')
 })
-app.get('/VideoEmbeds',(req,res)=>{
-    res.render('VideoEmbeds')
+app.get('/news',(req,res)=>{
+    res.render('news')
 })
 
 app.listen(3000,()=>{
