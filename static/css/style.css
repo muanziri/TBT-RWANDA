@@ -205,7 +205,12 @@ a:focus {
   transition-property: all;
   transition-timing-function: cubic-bezier(0.7, 1, 0.7, 1);
 }
-
+.UploadButton{
+  color: #fefefe;
+  border: none;
+  background-color: rgb(0, 62, 0);
+  
+}
 .s-btn.focus {
   text-decoration: none;
 }

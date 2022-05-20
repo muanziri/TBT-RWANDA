@@ -7,7 +7,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Community-podcast-TBT-Rwanda</title>
+    <title>Your Account</title>
     <meta name="keywords" content="HTML5 Theme" />
     <meta name="description" content="Megakit - HTML5 Theme">
     <meta name="author" content="keenthemes.com">
@@ -31,6 +31,10 @@
     <!-- Favicon -->
     <link rel="shortcut icon" href="../static/img/favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" href="../static/img/apple-touch-icon.png">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
 </head>
 <!-- End Head -->
 
@@ -39,7 +43,7 @@
 <body>
 
     <!--========== HEADER ==========-->
-    <header class="navbar-fixed-top s-header js__header-sticky js__header-overlay">
+    <header style="background-image: linear-gradient(to right ,white,rgb(98, 24, 2)); border-radius:  0px  0px 15px 15px;z-index: 1;" class="navbar-fixed-top s-header js__header-sticky ">
         <!-- Navbar -->
         <div class="s-header__navbar">
             <div class="s-header__container">
@@ -59,7 +63,7 @@
                         <!-- End Logo -->
                     </div>
                     <center>
-                        <h1>Community Podcast</h1>
+                        <h1 id="Onews">Your Account</h1>
                     </center>
                     <div class="s-header__navbar-row-col">
                         <!-- Trigger -->
@@ -146,20 +150,135 @@
     </header>
     <!--========== END HEADER ==========-->
 
-    <!--========== SWIPER SLIDER ==========-->
+    
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div id="id01" class="modal">
 
-   
+        <div class="modal-content animate" action="/action_page.php" method="post">
+          <div class="imgcontainer">
+            <span onclick="document.getElementById('id01').style.display='none'" class="close"
+              title="Close Modal">&times;</span>
+           <div id="controls">
+            <button id="pauseButton" disabled>Pause</button>
+            <button style=" border-radius: 50%; height: 100px;width: fit-content;border-color: rgba(240, 248, 255, 0); background-color: rgba(240, 248, 255, 0); "  id="recordButton"> 
+              <img id="imageRecoding"
+               style="height: inherit; width:inherit; border-radius: 50%;" src="../static/img/gifs/NoAnimatio.jpg" alt=""> </button>
+            <button id="stopButton" disabled>Stop</button>
+         </div>
+         <p>Elapsed time: <span id="time">0</span>s</p>
+         <div id="formats">Format: start recording to see sample rate</div>
+           <p><strong>Recordings:</strong></p>
+           <ol id="recordingsList"></ol>
+          </div>
+          
 
-
-
-    <!-- Clients -->
-    ]
-    <!-- End Clients -->
-
-    <!-- News -->
-
-    <!-- End Google Map -->
-    <!--========== END PAGE CONTENT ==========-->
+        </div>
+      </div>
+     
+      <button  onclick="document.querySelector('#id01').style.display='block'"style="position: fixed; background-color: black; border-radius:50%;height: 80px;width: 80px;bottom:4%;left:2%;z-index: 1;color:white;"><b>click to <br>narrate</b></button>
+  
+      <div style="width: 100%;height: fit-content; margin-left: 12px; margin-right: 12px; z-index: -1;" class="container text-center">    
+        <div class="row">
+          <div  class="col-sm-3 well">
+            <div style="height: 200px;" class="well">
+              <p><a href="#">My Profile</a></p>
+              <img src="bird.jpg" class="img-circle" height="65" width="65" alt="Avatar">
+            </div>
+            <div class="well">
+              <p><a href="#">Interests</a></p>
+              <p>
+                <span class="label label-default">News</span>
+                <span class="label label-primary">W3Schools</span>
+                <span class="label label-success">Labels</span>
+                <span class="label label-info">Football</span>
+                <span class="label label-warning">Gaming</span>
+                <span class="label label-danger">Friends</span>
+              </p>
+            </div>
+            <p><a href="#">Link</a></p>
+            <p><a href="#">Link</a></p>
+            <p><a href="#">Link</a></p>
+          </div>
+          <div class="col-sm-7">
+          
+            
+            <h3>Your recordings</h3>
+            <div class="row">
+              <div class="col-sm-3">
+                <div class="well">
+                 <p>John</p>
+                 <img src="bird.jpg" class="img-circle" height="55" width="55" alt="Avatar">
+                </div>
+              </div>
+              <div class="col-sm-9">
+                <div class="well">
+                  <p>Just Forgot that I had to mention something about someone to someone about how I forgot something, but now I forgot it. Ahh, forget it! Or wait. I remember.... no I don't.</p>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-3">
+                <div class="well">
+                 <p>Bo</p>
+                 <img src="bandmember.jpg" class="img-circle" height="55" width="55" alt="Avatar">
+                </div>
+              </div>
+              <div class="col-sm-9">
+                <div class="well">
+                  <p>Just Forgot that I had to mention something about someone to someone about how I forgot something, but now I forgot it. Ahh, forget it! Or wait. I remember.... no I don't.</p>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-3">
+                <div class="well">
+                 <p>Jane</p>
+                 <img src="bandmember.jpg" class="img-circle" height="55" width="55" alt="Avatar">
+                </div>
+              </div>
+              <div class="col-sm-9">
+                <div class="well">
+                  <p>Just Forgot that I had to mention something about someone to someone about how I forgot something, but now I forgot it. Ahh, forget it! Or wait. I remember.... no I don't.</p>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-3">
+                <div class="well">
+                 <p>Anja</p>
+                 <img src="bird.jpg" class="img-circle" height="55" width="55" alt="Avatar">
+                </div>
+              </div>
+              <div class="col-sm-9">
+                <div class="well">
+                  <p>Just Forgot that I had to mention something about someone to someone about how I forgot something, but now I forgot it. Ahh, forget it! Or wait. I remember.... no I don't.</p>
+                </div>
+              </div>
+            </div>     
+          </div>
+          <div class="col-sm-2 well">
+            <div class="thumbnail">
+              <p>Upcoming plays</p>
+              <img src="paris.jpg" alt="Paris" width="400" height="300">
+              <p><strong>Paris</strong></p>
+              <p>Fri. 27 November 2015</p>
+            </div>      
+            <div class="well">
+              <p>ADS</p>
+            </div>
+            <div class="well">
+              <p>ADS</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      
 
     <!--========== FOOTER ==========-->
     <footer class="g-bg-color--dark">
@@ -254,26 +373,22 @@
     <script type="text/javascript" src="../static/vendor/jquery.back-to-top.min.js"></script>
     <script type="text/javascript" src="../static/vendor/scrollbar/jquery.scrollbar.min.js"></script>
     <script type="text/javascript" src="../static/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
-    <script type="text/javascript" src="../static/vendor/swiper/swiper.jquery.min.js"></script>
+   
     <script type="text/javascript" src="../static/vendor/waypoint.min.js"></script>
     <script type="text/javascript" src="../static/vendor/counterup.min.js"></script>
-    <script type="text/javascript" src="../static/vendor/cubeportfolio/js/jquery.cubeportfolio.min.js"></script>
-    <script type="text/javascript" src="../static/vendor/jquery.parallax.min.js"></script>
-    <!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBsXUGTFS09pLVdsYEE9YrO2y4IAncAO2U"></script>-->
-    <script type="text/javascript" src="../static/vendor/jquery.wow.min.js"></script>
 
     <!-- General Components and Settings -->
     <script type="text/javascript" src="../static/js/global.min.js"></script>
     <script type="text/javascript" src="../static/js/components/header-sticky.min.js"></script>
     <script type="text/javascript" src="../static/js/components/scrollbar.min.js"></script>
     <script type="text/javascript" src="../static/js/components/magnific-popup.min.js"></script>
-    <script type="text/javascript" src="../static/js/components/swiper.min.js"></script>
-    <script type="text/javascript" src="../static/js/components/counter.min.js"></script>
     <script type="text/javascript" src="../static/js/components/portfolio-3-col.min.js"></script>
-    <script type="text/javascript" src="../static/js/components/parallax.min.js"></script>
-    <script type="text/javascript" src="../static/js/components/google-map.min.js"></script>
-    <script type="text/javascript" src="../static/js/components/wow.min.js"></script>
+    <script type="text/javascript" src="../static/js/newJS/recorder.js"></script> 
+    <script type="text/javascript" src="../static/js/newJS/app.js"></script>
+
     <script>
+         
+    
         var modal = document.getElementById('id01');
 
         // When the user clicks anywhere outside of the modal, close it

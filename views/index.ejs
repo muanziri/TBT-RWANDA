@@ -37,7 +37,7 @@
     <body>
 
         <!--========== HEADER ==========-->
-        <header  class="navbar-fixed-top s-header js__header-sticky js__header-overlay">
+        <header style="z-index: 1;"  class="navbar-fixed-top s-header js__header-sticky js__header-overlay">
             <!-- Navbar -->
             <div class="s-header__navbar">
                 <div class="s-header__container">
@@ -74,12 +74,15 @@
                     <div class="container-fluid">
                         <!-- Menu List -->                                
                         <ul class="list-unstyled s-header__nav-menu">
-                            <li class="s-header__nav-menu-item"><a class="s-header__nav-menu-link s-header__nav-menu-link-divider -is-active" href="/">Corporate</a></li>
-                            <li class="s-header__nav-menu-item"><a class="s-header__nav-menu-link s-header__nav-menu-link-divider" href="index_app_landing.html">App Landing</a></li>
-                            <li class="s-header__nav-menu-item"><a class="s-header__nav-menu-link s-header__nav-menu-link-divider" href="index_portfolio.html">Portfolio</a></li>
-                            <li class="s-header__nav-menu-item"><a class="s-header__nav-menu-link s-header__nav-menu-link-divider" href="index_events.html">Events</a></li>
-                            <li class="s-header__nav-menu-item"><a class="s-header__nav-menu-link s-header__nav-menu-link-divider" href="index_lawyer.html">Lawyer</a></li>
-                            <li class="s-header__nav-menu-item"><a class="s-header__nav-menu-link s-header__nav-menu-link-divider" href="index_clinic.html">Clinic</a></li>
+                            <li class="s-header__nav-menu-item"><a class="s-header__nav-menu-link s-header__nav-menu-link-divider -is-active" href="/">Home</a></li>
+                            <li class="s-header__nav-menu-item"><a class="s-header__nav-menu-link s-header__nav-menu-link-divider" href="/news">News</a></li>
+                            <li class="s-header__nav-menu-item"><a class="s-header__nav-menu-link s-header__nav-menu-link-divider" href="/podcast">The Podcast</a></li>
+                            <li class="s-header__nav-menu-item"><a class="s-header__nav-menu-link s-header__nav-menu-link-divider" href="/dashboard">Your Dashoard</a></li>
+                            <li class="s-header__nav-menu-item"><a class="s-header__nav-menu-link s-header__nav-menu-link-divider" href="index_events.html">Talk To US</a></li>
+                            <li class="s-header__nav-menu-item"><a class="s-header__nav-menu-link s-header__nav-menu-link-divider" href="index_lawyer.html">follow us on Facebook</a></li>
+                            <li class="s-header__nav-menu-item"><a class="s-header__nav-menu-link s-header__nav-menu-link-divider" href="index_clinic.html">follow us on Instagram</a></li>
+                            <li class="s-header__nav-menu-item"><a class="s-header__nav-menu-link s-header__nav-menu-link-divider" href="index_clinic.html">follow us on Twitter</a></li>
+                            <li class="s-header__nav-menu-item"><a class="s-header__nav-menu-link s-header__nav-menu-link-divider" href="index_clinic.html">terms and Conditions</a></li>
                             <li class="s-header__nav-menu-item"><a class="s-header__nav-menu-link s-header__nav-menu-link-divider" href="index_coming_soon.html">Coming Soon</a></li>
                         </ul>
                         <!-- End Menu List -->
@@ -123,7 +126,7 @@
         <!--========== END HEADER ==========-->
 
         <!--========== SWIPER SLIDER ==========-->
-        <div style="border-radius:  0px  0px 15px 15px;" class="s-swiper js__swiper-one-item">
+        <div style="border-radius:  0px  0px 15px 15px;z-index: 0;" class="s-swiper js__swiper-one-item">
             <!-- Swiper Wrapper -->
             <div class="swiper-wrapper">
                 <div class="g-fullheight--xs g-bg-position--center swiper-slide" style="background: url('../static/img/newImages/TBT.jpg');">
@@ -244,7 +247,7 @@
                 <div class="g-margin-b-80--xs">
                     <h2 class="g-font-size-40--xs g-font-size-50--sm g-font-size-60--md g-color--white">Narrate your Story</h2>
                 </div>
-                <a href="http://keenthemes.com/" class="text-uppercase s-btn s-btn--md s-btn--white-brd g-radius--50">Narrate</a>
+                <a onclick="document.getElementById('id01').style.display='block'" class="text-uppercase s-btn s-btn--md s-btn--white-brd g-radius--50">Narrate</a>
             </div>
         </div>
         <!-- End Parallax -->
@@ -545,7 +548,23 @@
             </div>
         </div>
         <!-- End Feedback Form -->
+        <div style="z-index: 2;" id="id01" class="modal">
 
+            <div style="margin-top: 10%;" class="modal-content animate" action="/action_page.php" method="post">
+                <div class="imgcontainer">
+                    <span onclick="document.getElementById('id01').style.display='none'" class="close"
+                        title="Close Modal">&times;</span>
+                 <h3>continue with</h3>
+                  <button style="border-radius:15px;border: none; background-color: blue; height: 5vw;width: 15vw;color: white;"><b>Facebook</b></button>
+                  <br>
+                  <br>
+                  <h4>or</h4>
+                  <button style="border-radius:15px;border: none; background-color: red;height: 5vw;width: 15vw;color: white;"><b>google+</b></button>
+                </div>
+
+
+            </div>
+        </div>
         <!-- Google Map -->
         <section class="s-google-map">
             <div id="js__google-container" class="s-google-container g-height-400--xs"></div>
