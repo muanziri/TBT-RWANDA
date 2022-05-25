@@ -21,7 +21,7 @@ var jwToken = new google.auth.JWT(
  // upload file in specific folder
 var folderId = "1WFFcWOU-EvMGWhp7_SSlsaXdp-e5dSEs";
 
-const uploadToTheDrive= (fileMetadata,media,stringedFilePath)=>{
+const uploadToTheDrivePodCast= (fileMetadata,media,stringedFilePath)=>{
 drive.files.create({
   auth: jwToken,
   resource: fileMetadata,
@@ -40,6 +40,25 @@ drive.files.create({
 });
 }
 
-module.exports= uploadToTheDrive;
+const uploadToTheDriveImage= (fileMetadata,media,stringedFilePath)=>{
+  drive.files.create({
+    auth: jwToken,
+    resource: fileMetadata,
+    media: media,
+    fields: 'id'
+  }, function(err, file) {
+    if (err) {
+      // Handle error
+      console.error(err);
+    } else {
+      console.log('File Id: ', file.data.id);
+      fs.unlink(stringedFilePath,()=>{
+        console.log("deleted")
+      })
+    }
+  });
+  }
+
+module.exports= {uploadToTheDrivePodCast,uploadToTheDriveImage};
  //}
  //creaAndUploadFile();

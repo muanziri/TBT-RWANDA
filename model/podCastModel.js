@@ -2,14 +2,15 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema
 
 const podcast = new Schema({
-
-    podCastUrlID: {
+   
+    UserId: {
         type: String,
         required: true
     },
     referenceId: {
         type: String,
-        required: true
+        required: true,
+        default:'The Id'
     },
     likes:{
         type:Number,

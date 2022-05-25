@@ -7,6 +7,10 @@ const UserSchema = new Schema({
         type: String,
         required: true
     },
+    Email: {
+        type: String,
+        required: true
+    },
     ProfilePhotoUrl: {
         type: String,
         required: true
@@ -14,6 +18,21 @@ const UserSchema = new Schema({
     AuthId: {
         type: String,
         required: true
+    },
+    TotalNumberOfRecordings: {
+        type: Number,
+        required: true,
+        default:0
+    },
+    TotalNumberOfLikes: {
+        type: Number,
+        required: true,
+        default:0
+    },
+    TotalNumberOfShares: {
+        type: Number,
+        required: true,
+        default:0
     },
     Date:{
         type: Date,
