@@ -92,7 +92,7 @@ app.post('/news',(req,res)=>{
     
 })
 app.post('/innitiate',upload.any(),async (req,res)=>{
-    console.log(req.user)
+   
     let files = req.files;
     let filepath="audioUploads/";
     let originalname=files[0].originalname+'.aac'
@@ -104,6 +104,8 @@ app.get('/logout', function(req, res){
     res.redirect('/');
   });
 app.post('/ToTheDrive',upload.any(), (req,res)=>{
+    
+    const user=req.user
     let files=req.files
     let filepath="./audioUploads/";
     let originalname=files[0].originalname+'.aac'
@@ -117,9 +119,13 @@ app.post('/ToTheDrive',upload.any(), (req,res)=>{
             mimeType: 'audio/aac',
            body: fs.createReadStream(path.join(__dirname, stringedFilePath))
           };   
- uploadToTheDrivePodCast(fileMetadata,media,stringedFilePath)
+ uploadToTheDrivePodCast(fileMetadata,media,stringedFilePath,user)
+})
+app.post('/updatePodcastTitle',(req,res)=>{
+    
 })
 app.post('/ToTheDriveImages',upload.any(), (req,res)=>{
+   
     let files=req.files
     let filepath="./audioUploads/";
     let originalname=files[0].originalname+'.aac'
@@ -133,7 +139,7 @@ app.post('/ToTheDriveImages',upload.any(), (req,res)=>{
             mimeType: 'audio/aac',
            body: fs.createReadStream(path.join(__dirname, stringedFilePath))
           };   
-  uploadToTheDriveImage(fileMetadata,media,stringedFilePath)
+  uploadToTheDriveImage(fileMetadata,media,stringedFilePath,user)
 })
 
 app.listen(3000,()=>{

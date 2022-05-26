@@ -1,5 +1,6 @@
 const path=require('path')
 const fs=require('fs');
+const  {podcasts}=require('./model/podCastModel')
 const { google } = require('googleapis');
 const key= require('./fetch-350015-b4ada057355d.json')
 var drive = google.drive("v3");
@@ -18,10 +19,10 @@ var jwToken = new google.auth.JWT(
     }
   });
 
- // upload file in specific folder
-var folderId = "1WFFcWOU-EvMGWhp7_SSlsaXdp-e5dSEs";
 
-const uploadToTheDrivePodCast= (fileMetadata,media,stringedFilePath)=>{
+
+const uploadToTheDrivePodCast= (fileMetadata,media,stringedFilePath,user)=>{
+  console.log(user)
 drive.files.create({
   auth: jwToken,
   resource: fileMetadata,
@@ -32,7 +33,9 @@ drive.files.create({
     // Handle error
     console.error(err);
   } else {
+   
     console.log('File Id: ', file.data.id);
+ 
     fs.unlink(stringedFilePath,()=>{
       console.log("deleted")
     })
@@ -58,7 +61,25 @@ const uploadToTheDriveImage= (fileMetadata,media,stringedFilePath)=>{
     }
   });
   }
+  const uploadToTheDriveMakeFOlder= (fileMetadata,media,stringedFilePath)=>{
+    drive.files.create({
+      auth: jwToken,
+      resource: fileMetadata,
+      media: media,
+      fields: 'id'
+    }, function(err, file) {
+      if (err) {
+        // Handle error
+        console.error(err);
+      } else {
+        console.log('File Id: ', file.data.id);
+        fs.unlink(stringedFilePath,()=>{
+          console.log("deleted")
+        })
+      }
+    });
+    }
 
-module.exports= {uploadToTheDrivePodCast,uploadToTheDriveImage};
+module.exports= {uploadToTheDrivePodCast,uploadToTheDriveImage,uploadToTheDriveMakeFOlder};
  //}
  //creaAndUploadFile();

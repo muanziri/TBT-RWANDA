@@ -95,7 +95,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
  
   
  
-  <div style="width: 50%; " class="w3-col w3-container w3-half ">
+  <div style="width: 100%; " class="w3-col w3-container w3-half ">
     
     <form class="w3-container w3-card-4">
       <h4>details</h4>
@@ -116,7 +116,28 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
     
 
     
-
+    <div style="width: 50%" id="id01" class="modal">
+      <h1>Genesis Espsode</h1>
+      <div style="margin-top:20px;" class="modal-content animate" action="/action_page.php" method="post">
+        <div class="imgcontainer">
+         <div id="controls">
+          <button id="pauseButton" disabled>Pause</button>
+          <button style=" border-radius: 50%; height: 100px;width: fit-content;border-color: rgba(240, 248, 255, 0); background-color: rgba(240, 248, 255, 0); "  id="recordButton"> 
+            <img id="imageRecoding"
+             style="height: inherit; width:inherit; border-radius: 50%;" src="../static/img/gifs/NoAnimatio.jpg" alt=""> </button>
+          <button id="stopButton" disabled>Stop</button>
+       </div>
+       <p>Elapsed time: <span id="time">0</span>s</p>
+       <div id="formats">Format: start recording to see sample rate</div>
+         <p><strong>Recordings:</strong></p>
+         <ol id="recordingsList"></ol>
+        </div>
+        
+  
+      </div>
+     
+        
+    </div>
 
     <button class="w3-button w3-section w3-teal w3-ripple">submit</button></p>
     
@@ -125,32 +146,9 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   
   </div>
   
-  <div style="width: 50%" id="id01" class="modal">
-    <h1>First Espside</h1>
-    <div style="margin-top:20px;" class="modal-content animate" action="/action_page.php" method="post">
-      <div class="imgcontainer">
-       <div id="controls">
-        <button id="pauseButton" disabled>Pause</button>
-        <button style=" border-radius: 50%; height: 100px;width: fit-content;border-color: rgba(240, 248, 255, 0); background-color: rgba(240, 248, 255, 0); "  id="recordButton"> 
-          <img id="imageRecoding"
-           style="height: inherit; width:inherit; border-radius: 50%;" src="../static/img/gifs/NoAnimatio.jpg" alt=""> </button>
-        <button id="stopButton" disabled>Stop</button>
-     </div>
-     <p>Elapsed time: <span id="time">0</span>s</p>
-     <div id="formats">Format: start recording to see sample rate</div>
-       <p><strong>Recordings:</strong></p>
-       <ol id="recordingsList"></ol>
-      </div>
-      
 
-    </div>
+
    
-      
-  </div>
-
-   <div class="w3-col w3-container w3-half w3-card-4 ">
-     <h1>Malisciouse Epsodes Check</h1>
-   </div>
   
 </div>
 <script type="text/javascript" src="../static/js/AdminRecorder/recorder.js"></script> 

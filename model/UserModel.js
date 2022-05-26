@@ -7,6 +7,12 @@ const UserSchema = new Schema({
         type: String,
         required: true
     },
+    currentPlay: {
+        type: String,
+        required: true,
+        default:'play'
+        
+    },
     Email: {
         type: String,
         required: true

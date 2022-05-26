@@ -7,6 +7,10 @@ const podcast = new Schema({
         type: String,
         required: true
     },
+     playName: {
+        type: String,
+        required: true
+    },
     referenceId: {
         type: String,
         required: true,
@@ -17,6 +21,11 @@ const podcast = new Schema({
         required:true,
         default:0
     },
+    status:{
+        type: String,
+        required: true,
+        default:'invoted'
+    },
     shares:{
         type:Number,
         required:true,
@@ -26,6 +35,6 @@ const podcast = new Schema({
 
 })
 
-const UserModel=mongoose.model('podcast',podcast);
+const podcasts=mongoose.model('podcast',podcast);
 
-module.exports=UserModel;
+module.exports= podcasts;
