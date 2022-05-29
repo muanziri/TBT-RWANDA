@@ -3,13 +3,12 @@ const express=require('express');
 const multer=require('multer')
 const mongoose=require('mongoose');
 const passport=require('passport')
-
-const PodCastModel=require('./model/podCastModel')
+const genesis=require('./model/genesisPodcast')
 const cookieSession=require('cookie-session')
 const flash=require('express-flash')
 const fs=require('fs')
 const path=require('path')
-const {uploadToTheDrivePodCast,uploadToTheDriveImage} =require('./googleDrive.js')
+const {uploadToTheDrivePodCast,uploadToTheDriveImage,uploadToTheDriveMakeFOlder} =require('./googleDrive.js')
 const upload=multer();
 const app=express();
 require('./athentications/authfacebook')
@@ -80,6 +79,63 @@ app.get('/BlogPostControl',(req,res)=>{
 })
 app.get('/PodcastControl',(req,res)=>{
     res.render('PodcastControl')
+})
+app.post('/PodcastControl',(req,res)=>{
+ var folderId = "1WFFcWOU-EvMGWhp7_SSlsaXdp-e5dSEs";   
+ var fileMetadata = {
+        'name': req.body.PlayName,
+        'mimeType': 'application/vnd.google-apps.folder',
+        parents: [folderId]
+       };
+       function funct(fileId){
+        console.log(fileId)
+       }
+uploadToTheDriveMakeFOlder(fileMetadata,funct) 
+  let name=req.body.PlayName;
+  let Season=req.body.Season;
+  let discrition=req.body.SeasonDiscription
+ new genesis({
+   PlayNames:name,
+   seasonNumber:Season,
+   PlayDiscription:discrition
+ }).save().then((results)=>{
+    req.flash('message','Now Record the first espode');
+    req.flash('playName',results.PlayNames);
+     res.redirect('/PodcastControl');
+ }).catch((err)=>{
+     if (err) throw err;
+ })
+})
+app.post('/PodcastControlInnitiate',(req,res)=>{
+    let files = req.files;
+    let filepath="audioUploads/";
+    let originalname=files[0].originalname+'.aac'
+    let stringedFilePath=filepath+originalname;
+    fs.writeFileSync(stringedFilePath,  files[0].buffer);
+
+})
+app.post('/PodcastControlUpload',upload.any(),(req,res)=>{
+    let files=req.files
+    let filepath="./audioUploads/";
+    let originalname=files[0].originalname+'.aac'
+    let stringedFilePath=filepath+originalname;
+   var folderId = req.body.folderId;
+  var fileMetadata = {
+        'name': [originalname],
+        parents: [folderId]
+      };
+      var media = {
+            mimeType: 'audio/aac',
+           body: fs.createReadStream(path.join(__dirname, stringedFilePath))
+          };   
+    uploadToTheDrivePodCastGenesis(fileMetadata,media,stringedFilePath,)
+
+})
+app.post('/innitiateGenesis',(req,res)=>{
+    console.log(req.body)
+})
+app.post('/UploadGenesis',(req,res)=>{
+    console.log(req.body)
 })
 
 app.get('/news',(req,res)=>{

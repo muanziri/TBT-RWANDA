@@ -2,9 +2,9 @@
   "name": "tbt-rwanda",
   "version": "1.0.0",
   "description": "this on is for making money",
-  "main": "keep.js",
+  "main": "index.js",
   "scripts": {
-    "start": "nodemon keep.js"
+    "start": "nodemon index.js"
   },
   "repository": {
     "type": "git",

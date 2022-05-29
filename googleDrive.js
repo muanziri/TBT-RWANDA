@@ -1,4 +1,5 @@
-const path=require('path')
+const path=require('path');
+const express=require('express')
 const fs=require('fs');
 const  {podcasts}=require('./model/podCastModel')
 const { google } = require('googleapis');
@@ -43,6 +44,28 @@ drive.files.create({
 });
 }
 
+const uploadToTheDrivePodCastGenesis= (fileMetadata,media,stringedFilePath)=>{
+ // console.log(user)
+drive.files.create({
+  auth: jwToken,
+  resource: fileMetadata,
+  media: media,
+  fields: 'id'
+}, function(err, file) {
+  if (err) {
+    // Handle error
+    console.error(err);
+  } else {
+   
+    console.log('File Id: ', file.data.id);
+ 
+    fs.unlink(stringedFilePath,()=>{
+      console.log("deleted")
+    })
+  }
+});
+}
+
 const uploadToTheDriveImage= (fileMetadata,media,stringedFilePath)=>{
   drive.files.create({
     auth: jwToken,
@@ -61,21 +84,22 @@ const uploadToTheDriveImage= (fileMetadata,media,stringedFilePath)=>{
     }
   });
   }
-  const uploadToTheDriveMakeFOlder= (fileMetadata,media,stringedFilePath)=>{
+  // use mime type  application/vnd.google-apps.folder
+  const uploadToTheDriveMakeFOlder= (fileMetadata,funct)=>{
     drive.files.create({
       auth: jwToken,
       resource: fileMetadata,
-      media: media,
       fields: 'id'
     }, function(err, file) {
       if (err) {
         // Handle error
         console.error(err);
       } else {
-        console.log('File Id: ', file.data.id);
-        fs.unlink(stringedFilePath,()=>{
-          console.log("deleted")
-        })
+        let fileId=file.data.id
+        
+        funct(fileId);
+        
+        
       }
     });
     }

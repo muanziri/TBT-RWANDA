@@ -90,34 +90,28 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
       </div>
     </div>
   </div>
+  
 
   <h1>Play</h1>
+  <% if (messages.message) {%>
+  <div style="position:absolute; top: 50px; right: 0;color: aliceblue; background-color: rgb(68, 154, 42);height: 10%;width: 25vw;">
+  <h4 style="position: inherit;top:-20%;left: 3%;"><b>Message!</b></h4>
+  <br>
  
-  
+  <p><%=messages.message%> </p>
+
+  </div>
+  <% } %>  
  
   <div style="width: 100%; " class="w3-col w3-container w3-half ">
     
-    <form class="w3-container w3-card-4">
-      <h4>details</h4>
-    <p>
-    <input class="w3-input" type="text" style="width:90%" required>
-    <label>Play Name</label></p>
-    <p>
-      <input class="w3-input" type="number" style="width:90%" required>
-      <label>Season</label></p>
-    <p>
-    <textarea class="w3-input" type="password" style="width:90%" required></textarea>
-    <label>Season discription</label></p>
-    
-    <p>
-
-    <input type="file" name="gender" >
-    <label>Background Pic</label></p>
+    <div class="w3-container w3-card-4">
     
 
-    
-    <div style="width: 50%" id="id01" class="modal">
+  <% if (messages.playName) {%>
+    <div  style="width: 50% ;display:block;" id="id01" class="modal">
       <h1>Genesis Espsode</h1>
+      <h4 style="background-color:rgb(174, 172, 172); position: relative; top: 30%;right: 0;"> the genesis espode is<b><%=messages.playName%> </b> </h4>
       <div style="margin-top:20px;" class="modal-content animate" action="/action_page.php" method="post">
         <div class="imgcontainer">
          <div id="controls">
@@ -138,10 +132,29 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
      
         
     </div>
-
-    <button class="w3-button w3-section w3-teal w3-ripple">submit</button></p>
+  <% } else { %>
+    <form style="display: block;" action="/PodcastControl" method="post">      
+      <h4>details</h4>
+    <p>
+    <input name="PlayName" class="w3-input" type="text" style="width:90%" required>
+    <label>Play Name</label></p>
+    <p>
+      <input class="w3-input" name="Season" type="number" style="width:90%" required>
+      <label>Season</label></p>
+    <p>
+    <textarea name="SeasonDiscription" class="w3-input" type="password" style="width:90%" required></textarea>
+    <label>Season discription</label></p>
     
-    </form>
+    <p>
+
+    <input type="file" name="pic" >
+    <label>Background Pic</label></p>
+    <button class="w3-button w3-section w3-teal w3-ripple">submit</button>
+  </form>
+    <% } %> 
+    </p>
+    
+  </div>
     
   
   </div>

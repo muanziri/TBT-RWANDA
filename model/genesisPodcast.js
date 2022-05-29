@@ -3,14 +3,16 @@ const Schema = mongoose.Schema
 
 const podcast = new Schema({
 
- 
-    referenceId: {
+    PlayNames:{
         type: String,
-        required: true,
-        default:'The Id'
+        required: true
     },
-  
-    PlayName:{
+    seasonNumber:{
+        type: Number,
+        required: true,
+        default:0
+    },
+    PlayDiscription:{
         type: String,
         required: true
     },

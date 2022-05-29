@@ -229,6 +229,12 @@ function createDownloadLink(blob) {
 	progress.max='50'
 	progress.style.display='none'
     li.appendChild(progress)
+     
+	var inputForIdFolder = document.createElement('input');
+	inputForIdFolder.id="inputForIdFolder"
+	inputForIdFolder.style.display='block'
+    li.appendChild(inputForIdFolder)
+ 
 
 	var progress2 = document.createElement('progress');
 	progress2.id="progressBar2"
@@ -315,7 +321,7 @@ function createDownloadLink(blob) {
 		};
 		var fd=new FormData();
 		fd.append("audio_data",blob, filename);
-		xhr.open("POST","innitiate",true);
+		xhr.open("POST","innitiateGenesis",true);
 		xhr.send(fd);
 	})
 	li.appendChild(document.createTextNode (" "))//add a space in between
