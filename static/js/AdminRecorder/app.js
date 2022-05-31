@@ -230,8 +230,7 @@ function createDownloadLink(blob) {
 	progress.style.display='none'
     li.appendChild(progress)
      
-	var inputForIdFolder = document.createElement('input');
-	inputForIdFolder.id="inputForIdFolder"
+	var inputForIdFolder =document.getElementById('inputForIdFolder');
 	inputForIdFolder.style.display='block'
     li.appendChild(inputForIdFolder)
  
@@ -296,7 +295,8 @@ function createDownloadLink(blob) {
 	 	};
 	 	var fd=new FormData();
 	 	fd.append("audio_data",blob, filename);
-	 	xhr.open("POST","ToTheDrive",true);
+		 fd.append('folderId',inputForIdFolder.value) 
+	 	xhr.open("POST","PodcastControlUpload",true);
 	 	xhr.send(fd);
 	 })
 	
@@ -321,7 +321,7 @@ function createDownloadLink(blob) {
 		};
 		var fd=new FormData();
 		fd.append("audio_data",blob, filename);
-		xhr.open("POST","innitiateGenesis",true);
+		xhr.open("POST","PodcastControlInnitiate",true);
 		xhr.send(fd);
 	})
 	li.appendChild(document.createTextNode (" "))//add a space in between

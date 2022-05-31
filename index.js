@@ -1,14 +1,18 @@
 require('dotenv').config()
 const express=require('express');
+
 const multer=require('multer')
 const mongoose=require('mongoose');
 const passport=require('passport')
 const genesis=require('./model/genesisPodcast')
 const cookieSession=require('cookie-session')
 const flash=require('express-flash')
+const { google } = require('googleapis');
+const key= require('./fetch-350015-b4ada057355d.json')
+var drive = google.drive("v3");
 const fs=require('fs')
 const path=require('path')
-const {uploadToTheDrivePodCast,uploadToTheDriveImage,uploadToTheDriveMakeFOlder} =require('./googleDrive.js')
+const {uploadToTheDrivePodCast,uploadToTheDriveImage,uploadToTheDrivePodCastGenesis} =require('./googleDrive.js')
 const upload=multer();
 const app=express();
 require('./athentications/authfacebook')
@@ -81,32 +85,70 @@ app.get('/PodcastControl',(req,res)=>{
     res.render('PodcastControl')
 })
 app.post('/PodcastControl',(req,res)=>{
- var folderId = "1WFFcWOU-EvMGWhp7_SSlsaXdp-e5dSEs";   
+    var jwToken = new google.auth.JWT(
+        key.client_email,
+        null,
+        key.private_key, ["https://www.googleapis.com/auth/drive"],
+        null
+      );
+      jwToken.authorize((authErr) => {
+        if (authErr) {
+          console.log("error : " + authErr);
+          return;
+        } 
+      });
+
+      const uploadToTheDriveMakeFOlder= (fileMetadata)=>{
+        drive.files.create({
+          auth: jwToken,
+          resource: fileMetadata,
+          fields: 'id'
+        }, function(err, file) {
+          if (err) {
+            // Handle error
+            console.error(err);
+          } else {
+            let fileId=file.data.id
+            req.flash('message','Now Record the first espode');
+            req.flash('Id',fileId);
+            req.flash('playName',req.body.PlayName);
+            let name=req.body.PlayName;
+            let Season=req.body.Season;
+            let discrition=req.body.SeasonDiscription
+           new genesis({
+             PlayNames:name,
+             seasonNumber:Season,
+             PlayDiscription:discrition,
+             FolderId:fileId
+           }).save().then((results)=>{
+           }).catch((err)=>{
+               if (err) throw err;
+           })
+            res.redirect('/PodcastControl')
+            
+            
+          }
+        });
+        }
+    
+
+
+ var folderId = "1WFFcWOU-EvMGWhp7_SSlsaXdp-e5dSEs";
+ var folderName=req.body.PlayName+" S "+req.body.Season   
  var fileMetadata = {
-        'name': req.body.PlayName,
+        'name': folderName,
         'mimeType': 'application/vnd.google-apps.folder',
         parents: [folderId]
        };
        function funct(fileId){
         console.log(fileId)
        }
-uploadToTheDriveMakeFOlder(fileMetadata,funct) 
-  let name=req.body.PlayName;
-  let Season=req.body.Season;
-  let discrition=req.body.SeasonDiscription
- new genesis({
-   PlayNames:name,
-   seasonNumber:Season,
-   PlayDiscription:discrition
- }).save().then((results)=>{
-    req.flash('message','Now Record the first espode');
-    req.flash('playName',results.PlayNames);
-     res.redirect('/PodcastControl');
- }).catch((err)=>{
-     if (err) throw err;
- })
+       module.exports=funct;
+
+ 
+ uploadToTheDriveMakeFOlder(fileMetadata) 
 })
-app.post('/PodcastControlInnitiate',(req,res)=>{
+app.post('/PodcastControlInnitiate',upload.any(),(req,res)=>{
     let files = req.files;
     let filepath="audioUploads/";
     let originalname=files[0].originalname+'.aac'
@@ -119,20 +161,32 @@ app.post('/PodcastControlUpload',upload.any(),(req,res)=>{
     let filepath="./audioUploads/";
     let originalname=files[0].originalname+'.aac'
     let stringedFilePath=filepath+originalname;
-   var folderId = req.body.folderId;
+   var folderIds = req.body.folderId;
   var fileMetadata = {
         'name': [originalname],
-        parents: [folderId]
+        parents: [folderIds]
       };
       var media = {
             mimeType: 'audio/aac',
            body: fs.createReadStream(path.join(__dirname, stringedFilePath))
           };   
-    uploadToTheDrivePodCastGenesis(fileMetadata,media,stringedFilePath,)
+    uploadToTheDrivePodCastGenesis(fileMetadata,media,stringedFilePath,folderIds,originalname,)
 
 })
-app.post('/innitiateGenesis',(req,res)=>{
+app.post('/latestShowbizz',(req,res)=>{
+   
+})
+app.post('/gossipAndNews',(req,res)=>{
+   
+})
+app.post('/showbizzTrendingPics',(req,res)=>{
+   
+})
+app.post('/UploadGenesis',(req,res)=>{
     console.log(req.body)
+})
+app.post('/innitiateGenesis',(req,res)=>{
+   
 })
 app.post('/UploadGenesis',(req,res)=>{
     console.log(req.body)

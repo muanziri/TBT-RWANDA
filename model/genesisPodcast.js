@@ -7,6 +7,15 @@ const podcast = new Schema({
         type: String,
         required: true
     },
+    FolderId:{
+        type: String,
+        required: true
+    },
+    genesisEspode:{
+        type: String,
+        required: true,
+        default:'id'
+    },
     seasonNumber:{
         type: Number,
         required: true,

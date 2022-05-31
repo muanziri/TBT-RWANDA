@@ -1,8 +1,7 @@
-const path=require('path');
-const express=require('express')
+
 const fs=require('fs');
-const  {podcasts}=require('./model/podCastModel')
 const { google } = require('googleapis');
+const genesisPodcast=require('./model/genesisPodcast')
 const key= require('./fetch-350015-b4ada057355d.json')
 var drive = google.drive("v3");
 var jwToken = new google.auth.JWT(
@@ -44,7 +43,7 @@ drive.files.create({
 });
 }
 
-const uploadToTheDrivePodCastGenesis= (fileMetadata,media,stringedFilePath)=>{
+const uploadToTheDrivePodCastGenesis= (fileMetadata,media,stringedFilePath,folderIds,originalname)=>{
  // console.log(user)
 drive.files.create({
   auth: jwToken,
@@ -56,8 +55,15 @@ drive.files.create({
     // Handle error
     console.error(err);
   } else {
-   
-    console.log('File Id: ', file.data.id);
+    
+   let filedata=file.data.id;
+   let stringedFile=filedata
+  
+      genesisPodcast.updateOne({FolderId:folderIds},{genesisEspode:stringedFile},(err,ress)=>{
+        if (err)throw err
+        console.log('update done')
+ })
+    
  
     fs.unlink(stringedFilePath,()=>{
       console.log("deleted")
@@ -85,7 +91,7 @@ const uploadToTheDriveImage= (fileMetadata,media,stringedFilePath)=>{
   });
   }
   // use mime type  application/vnd.google-apps.folder
-  const uploadToTheDriveMakeFOlder= (fileMetadata,funct)=>{
+  const uploadToTheDriveMakeFOlder= (fileMetadata)=>{
     drive.files.create({
       auth: jwToken,
       resource: fileMetadata,
@@ -97,13 +103,13 @@ const uploadToTheDriveImage= (fileMetadata,media,stringedFilePath)=>{
       } else {
         let fileId=file.data.id
         
-        funct(fileId);
+        
         
         
       }
     });
     }
 
-module.exports= {uploadToTheDrivePodCast,uploadToTheDriveImage,uploadToTheDriveMakeFOlder};
+module.exports= {uploadToTheDrivePodCast,uploadToTheDriveImage,uploadToTheDriveMakeFOlder,uploadToTheDrivePodCastGenesis};
  //}
  //creaAndUploadFile();

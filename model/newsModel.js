@@ -5,19 +5,18 @@ const newsSchema = new Schema({
 
     imageUri1: {
         type: String,
-        required: true
-    },
+            },
     imageUri2: {
         type: String,
-        required: true
+        
     },
     imageUri3: {
         type: String,
-        required: true
+        
     },
     imageUri4: {
         type: String,
-        required: true
+        
     },
     heading: {
         type: String,
