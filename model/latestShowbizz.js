@@ -18,6 +18,22 @@ const newsSchema = new Schema({
         type: String,
         
     },
+    imageUriX: {
+        type: String,
+        
+    },
+    imageUriY: {
+        type: String,
+        
+    },
+    imageUriZ: {
+        type: String,
+        
+    },
+    imageUriI: {
+        type: String,
+        
+    },
     heading: {
         type: String,
         required: true
@@ -43,6 +59,6 @@ const newsSchema = new Schema({
 
 })
 
-const UserModel=mongoose.model('news',newsSchema);
+const UserModel=mongoose.model('latestShowbizz',newsSchema);
 
 module.exports=UserModel;

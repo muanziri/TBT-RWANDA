@@ -1,39 +1,25 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema
 
-const podcast = new Schema({
+const newsSchema = new Schema({
 
-    PlayNames:{
-        type: String,
-        required: true
-    },
-    FolderId:{
-        type: String,
-        required: true
-    },
-    genesisEspode:{
+    thePhotoGraper:{
         type: String,
         required: true,
-        default:'id'
     },
-    seasonNumber:{
-        type: Number,
-        required: true,
-        default:0
-    },
-    PlayDiscription:{
+    heading:{
         type: String,
-        required: true
+        required: true,
     },
-    shares:{
-        type:Number,
-        required:true,
-        default:0
+    Date:{
+        type: Date,
+        required: true,
+        default:Date.now
+
     }
-   
 
 })
 
-const genesis=mongoose.model('genesis',podcast);
+const UserModel=mongoose.model('showbizzTrendingPics',newsSchema);
 
-module.exports=genesis;
+module.exports=UserModel;
