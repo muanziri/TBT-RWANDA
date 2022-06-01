@@ -4,10 +4,8 @@ const express=require('express');
 const multer=require('multer')
 const mongoose=require('mongoose');
 const passport=require('passport')
+
 const genesis=require('./model/genesisPodcast')
-const gossipAndNews=require('./model/gossipAndNews')
-const latestShowbizz=require('./model/latestShowbizz')
-const showbizzTrendingPics=require('./model/showbizzTrendingPics')
 const cookieSession=require('cookie-session')
 const flash=require('express-flash')
 const { google } = require('googleapis');
@@ -69,7 +67,7 @@ app.get('/auth/google/failure',(req,res)=>{
 })
 
 app.get('/',(req,res)=>{
-    res.render('index')
+    res.render('news')
 })
 app.get('/dashboard',(req,res)=>{
     if(!req.user){
@@ -151,12 +149,13 @@ app.post('/PodcastControl',(req,res)=>{
  
  uploadToTheDriveMakeFOlder(fileMetadata) 
 })
-app.post('/PodcastControlInnitiate',upload.any(),(req,res)=>{
-    let files = req.files;
-    let filepath="audioUploads/";
-    let originalname=files[0].originalname+'.aac'
-    let stringedFilePath=filepath+originalname;
-    fs.writeFileSync(stringedFilePath,  files[0].buffer);
+app.post('/PodcastControlInnitiate',(req,res)=>{
+
+    // let files = req.files;
+    // let filepath="audioUploads/";
+    // let originalname=files[0].originalname+'.aac'
+    // let stringedFilePath=filepath+originalname;
+    // fs.writeFileSync(stringedFilePath,  files[0].buffer);
 
 })
 app.post('/PodcastControlUpload',upload.any(),(req,res)=>{
@@ -176,27 +175,15 @@ app.post('/PodcastControlUpload',upload.any(),(req,res)=>{
     uploadToTheDrivePodCastGenesis(fileMetadata,media,stringedFilePath,folderIds,originalname,)
 
 })
-app.post('/latestShowbizz',(req,res)=>{
-   
-})
-app.post('/gossipAndNews',(req,res)=>{
-   
-})
-app.post('/showbizzTrendingPics',(req,res)=>{
-   
-})
-app.post('/UploadGenesis',(req,res)=>{
-    console.log(req.body)
-})
 app.post('/innitiateGenesis',(req,res)=>{
-   
+    console.log(req.body)
 })
 app.post('/UploadGenesis',(req,res)=>{
     console.log(req.body)
 })
 
-app.get('/news',(req,res)=>{
-    res.render('news')
+app.get('/home',(req,res)=>{
+    res.render('index')
 })
 app.get('/login',(req,res)=>{
     res.render('login')
@@ -254,8 +241,8 @@ app.post('/ToTheDriveImages',upload.any(), (req,res)=>{
           };   
   uploadToTheDriveImage(fileMetadata,media,stringedFilePath,user)
 })
-let port=process.env.PORT||3000
-app.listen(port,()=>{
+
+app.listen(3000,()=>{
     console.log('heard from 3000');
 })
 

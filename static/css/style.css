@@ -39,6 +39,11 @@ h6 {
   margin-bottom: .5rem;
 }
 
+.imageContainerNews {
+  width: 70%;
+  height: 100%;
+}
+
 h1,
 h2,
 h3,
@@ -101,6 +106,12 @@ h5 {
 
 h6 {
   font-size: 1rem;
+}
+
+.newsHeadlines {
+  background-color: rgb(255, 253, 253);
+  width: 30%;
+  height: 100%;
 }
 
 em,
@@ -365,6 +376,7 @@ fieldset[disabled] .s-btn {
   margin-left: 15px;
   margin-right: 15px;
 }
+
 .middelImage {
   background-color: rgb(1, 1, 1);
   height: 400px;
@@ -1406,10 +1418,12 @@ fieldset[disabled] .s-btn {
 
 /* Menu List */
 .s-header__nav-menu {
-  width: 18.75rem;
-  float: right;
+  display: flex;
+  flex-direction: column;
+  width: 1300px;
   text-align: right;
   margin-bottom: 0;
+  margin-right: 0;
 }
 
 @media (max-width: 47.9em) {
@@ -1426,8 +1440,13 @@ fieldset[disabled] .s-btn {
 }
 
 .s-header__nav-menu-item {
-  padding: 0 0 0 5.625rem;
-  margin-bottom: .3125rem;
+  width: 100%;
+  position: relative;
+  right: 0%;
+  margin-right: 0%;
+
+
+
 }
 
 @media (max-width: 47.9em) {
@@ -2417,7 +2436,7 @@ fieldset[disabled] .s-btn {
 
 .newsClass {
   width: 45%;
-  height: 260px;
+  height: 300px;
   background-color: rgba(255, 0, 0, 0);
   margin-bottom: 5px;
   margin-left: 15px;
@@ -2510,7 +2529,7 @@ fieldset[disabled] .s-btn {
 .ChangeOnMobile {
   width: 80%;
   height: fit-content;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0);
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -2541,7 +2560,7 @@ fieldset[disabled] .s-btn {
 
 #Onews {
   width: 50vw;
-  background-color: rgba(255, 255, 255, 0);
+   color: rgb(50, 27, 1);
 }
 
 .close:hover,
@@ -2567,6 +2586,10 @@ fieldset[disabled] .s-btn {
 }
 
 @media screen and (max-width: 400px) {
+  .imageContainerNews {
+    width: 100%;
+    height: 50%;
+  }
 
   span.psw {
     display: block;
@@ -2602,13 +2625,15 @@ fieldset[disabled] .s-btn {
     width: 100%;
 
   }
-  #showbizzTrendingNews{
+
+  #showbizzTrendingNews {
     margin-left: 0%;
     margin-right: 0%;
     padding-left: 12.5px;
     width: 100%;
 
   }
+
   .middelImage {
     background-color: rgb(1, 1, 1);
     height: 400px;
@@ -2621,15 +2646,21 @@ fieldset[disabled] .s-btn {
     background-color: rgba(255, 255, 255, 0);
   }
 
+  .newsHeadlines {
+    background-color: rgb(255, 253, 253);
+    width: 100%;
+    height: 30%;
+  }
+
   .newsClass {
     width: 100%;
-    height: 300px;
+    height: fit-content;
     background-color: rgba(255, 0, 0, 0);
-    margin-bottom: 5px;
+    
     margin-left: 0px;
-    margin-top: 30px;
+    margin-top: 2px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
   }
 
   #buttonChanger {
@@ -2798,8 +2829,8 @@ fieldset[disabled] .s-btn {
 
 
 
- /* tobe editted */
- @import url("https://fonts.googleapis.com/css?family=Aladin|Anton|Geo|Lato:100,300,400,700,900|Nunito:900|Oswald|Ramabhadra|Roboto|Roboto+Condensed|Roboto+Slab|Secular+One");
+/* tobe editted */
+@import url("https://fonts.googleapis.com/css?family=Aladin|Anton|Geo|Lato:100,300,400,700,900|Nunito:900|Oswald|Ramabhadra|Roboto|Roboto+Condensed|Roboto+Slab|Secular+One");
 
 :root {
   --light: silver;
@@ -2831,7 +2862,7 @@ p {
   grid-template-columns: 30px 1fr 30px;
 }
 
-.grid-wrapper > * {
+.grid-wrapper>* {
   grid-column: 2;
   min-width: 0;
 }
@@ -2857,13 +2888,11 @@ p {
   margin-bottom: 15px;
   font-weight: 700;
   font-family: "Ramabhadra";
-  background: linear-gradient(
-      to right,
+  background: linear-gradient(to right,
       rgba(255, 255, 255, 0.5),
-      rgba(255, 44, 118, 0.6)
-    ),
+      rgba(255, 44, 118, 0.6)),
     #485fed;
-  -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
@@ -2913,11 +2942,13 @@ main {
   color: #fff;
   text-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
+
 /* Beware! Important to Responsive */
 .vertical {
   grid-row: span 3;
   flex-direction: column;
 }
+
 .vertical .text {
   margin-top: auto;
 }
@@ -2926,6 +2957,7 @@ main {
   grid-row: span 2;
   flex-direction: column;
 }
+
 .r-vertical .text {
   margin-top: auto;
 }
@@ -2940,71 +2972,65 @@ main {
 }
 
 .article:nth-child(1) {
-  background: linear-gradient(
-      to right,
+  background: linear-gradient(to right,
       rgba(72, 95, 237, 0.3),
-      rgba(255, 44, 118, 0.3)
-    ),
+      rgba(255, 44, 118, 0.3)),
     url(https://images.unsplash.com/photo-1522308355935-7dd08366e353?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=695aa9a5c2e58c5c8de255bebf6b4114&auto=format&fit=crop&w=1318&q=80);
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
 }
+
 .article:nth-child(2) {
-  background: linear-gradient(
-      to right,
+  background: linear-gradient(to right,
       rgba(72, 95, 237, 0.5),
-      rgba(255, 44, 118, 0.5)
-    ),
+      rgba(255, 44, 118, 0.5)),
     url(https://images.unsplash.com/photo-1519955670870-39171fa51cd8?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=20b76c7a340263b9a2c2efd3b47239f1&auto=format&fit=crop&w=1410&q=80);
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
 }
+
 .article:nth-child(3) {
-  background: linear-gradient(
-      to right,
+  background: linear-gradient(to right,
       rgba(72, 95, 237, 0.3),
-      rgba(255, 44, 118, 0.3)
-    ),
+      rgba(255, 44, 118, 0.3)),
     url(https://images.unsplash.com/photo-1521020639566-f5d735f2148b?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=2ad909c393482e54f54a28d049916089&auto=format&fit=crop&w=1350&q=80);
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
 }
+
 .article:nth-child(4) {
-  background: linear-gradient(
-      to right,
+  background: linear-gradient(to right,
       rgba(72, 95, 237, 0.3),
-      rgba(255, 44, 118, 0.3)
-    ),
+      rgba(255, 44, 118, 0.3)),
     url(https://images.unsplash.com/photo-1490383559880-5003a7baa963?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=0d001d1d90533a70a28f84477a4d3ba0&auto=format&fit=crop&w=1353&q=80);
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
 }
+
 .article:nth-child(5) {
-  background: linear-gradient(
-      to right,
+  background: linear-gradient(to right,
       rgba(72, 95, 237, 0.3),
-      rgba(255, 44, 118, 0.3)
-    ),
+      rgba(255, 44, 118, 0.3)),
     url(https://images.unsplash.com/photo-1521539709790-af44b66b2c5b?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=1a7b1c3c000f98778259df93b11ed619&auto=format&fit=crop&w=1350&q=80);
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
 }
+
 .article:nth-child(6) {
-  background: linear-gradient(
-      to right,
+  background: linear-gradient(to right,
       rgba(72, 95, 237, 0.3),
-      rgba(255, 44, 118, 0.3)
-    ),
+      rgba(255, 44, 118, 0.3)),
     url(https://images.unsplash.com/photo-1518687513698-5ef14465356a?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=eecc658aab06ed87a93f02e3e703cf62&auto=format&fit=crop&w=1456&q=80);
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
 }
+
 .article:nth-child(7) {
   background: radial-gradient(rgba(72, 95, 237, 0.6), rgba(255, 44, 118, 0.2)),
     url(https://images.unsplash.com/photo-1506654020181-7c2ef87cc5a9?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=f23904d37f95b716c9fa3a170eb1420d&auto=format&fit=crop&w=1350&q=80);
@@ -3012,67 +3038,61 @@ main {
   background-size: cover;
   background-repeat: no-repeat;
 }
+
 .article:nth-child(8) {
-  background: linear-gradient(
-      to right,
+  background: linear-gradient(to right,
       rgba(72, 95, 237, 0.3),
-      rgba(255, 44, 118, 0.3)
-    ),
+      rgba(255, 44, 118, 0.3)),
     url(https://images.unsplash.com/photo-1515600467781-911b35a7e539?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=017b5199627fe076e2e1c0ea21e29c19&auto=format&fit=crop&w=1350&q=80);
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
 }
+
 .article:nth-child(9) {
-  background: linear-gradient(
-      to right,
+  background: linear-gradient(to right,
       rgba(72, 95, 237, 0.3),
-      rgba(255, 44, 118, 0.3)
-    ),
+      rgba(255, 44, 118, 0.3)),
     url(https://images.unsplash.com/photo-1502886315456-e6c2e728db92?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=b665c6fd74375e0678c04260f8e0a7fa&auto=format&fit=crop&w=1363&q=80);
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
 }
+
 .article:nth-child(10) {
-  background: linear-gradient(
-      to right,
+  background: linear-gradient(to right,
       rgba(72, 95, 237, 0.3),
-      rgba(255, 44, 118, 0.3)
-    ),
+      rgba(255, 44, 118, 0.3)),
     url(https://images.unsplash.com/photo-1505461296292-7d67beed10a2?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=9fd2e2714aec5f8679b7bf26dcec02ac&auto=format&fit=crop&w=1350&q=80);
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
 }
+
 .article:nth-child(11) {
-  background: linear-gradient(
-      to right,
+  background: linear-gradient(to right,
       rgba(72, 95, 237, 0.3),
-      rgba(255, 44, 118, 0.3)
-    ),
+      rgba(255, 44, 118, 0.3)),
     url(https://images.unsplash.com/photo-1503332132010-d1b77a049ddd?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=49016a52e96d5176453fda05957035c9&auto=format&fit=crop&w=1350&q=80);
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
 }
+
 .article:nth-child(12) {
-  background: linear-gradient(
-      to right,
+  background: linear-gradient(to right,
       rgba(72, 95, 237, 0.3),
-      rgba(255, 44, 118, 0.3)
-    ),
+      rgba(255, 44, 118, 0.3)),
     url(https://images.unsplash.com/photo-1519033040120-02d2f6a600e1?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=e183d8ace29a5a15afc323aa6fe21c08&auto=format&fit=crop&w=679&q=80);
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
 }
+
 .article:nth-child(13) {
-  background: linear-gradient(
-      to right,
+  background: linear-gradient(to right,
       rgba(72, 95, 237, 0.3),
-      rgba(255, 44, 118, 0.3)
-    ),
+      rgba(255, 44, 118, 0.3)),
     url(https://images.unsplash.com/photo-1518600603477-b104d5985ef4?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=9c0201a521794388f21fead899234045&auto=format&fit=crop&w=1456&q=80);
   background-position: center;
   background-size: cover;
@@ -3083,7 +3103,7 @@ main {
 
 /*============ Contact ============*/
 
-.grid-wrapper > .contact {
+.grid-wrapper>.contact {
   grid-column: 1 / -1;
   padding: 30px 30px 60px;
   background: radial-gradient(#485fed, rgba(255, 44, 118, 0.3)), #485fed;
@@ -3095,13 +3115,11 @@ main {
   margin: 0;
   font-size: 60px;
   font-weight: 900;
-  background: linear-gradient(
-      to right,
+  background: linear-gradient(to right,
       rgba(255, 198, 0, 0.9),
-      rgba(255, 44, 118, 0.7)
-    ),
+      rgba(255, 44, 118, 0.7)),
     #485fed;
-  -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   color: #ffc600;
 }
@@ -3124,7 +3142,8 @@ main {
 }
 
 input {
-  width: 100%; /* Important to be directly responsive without media */
+  width: 100%;
+  /* Important to be directly responsive without media */
   border: 0;
   border-radius: 2px;
   padding: 8px 15px;
@@ -3141,7 +3160,8 @@ textarea::placeholder {
 }
 
 input:last-child {
-  width: 100%; /* Important to be directly responsive without media */
+  width: 100%;
+  /* Important to be directly responsive without media */
   background: transparent;
   border: 1px solid lightblue;
   color: lightblue;
@@ -3150,6 +3170,7 @@ input:last-child {
   cursor: pointer;
   transition: all 200ms ease-out;
 }
+
 input:last-child:hover {
   border: 1px solid aliceblue;
   color: aliceblue;
@@ -3157,7 +3178,8 @@ input:last-child:hover {
 
 textarea {
   grid-area: textarea;
-  width: 100%; /* Important to be directly responsive without media */
+  width: 100%;
+  /* Important to be directly responsive without media */
   border: 0;
   border-radius: 2px;
   padding: 8px 15px;
@@ -3178,7 +3200,7 @@ textarea {
   display: flex;
 }
 
-footer > p {
+footer>p {
   margin: auto;
   font-size: 13px;
   color: lightblue;
@@ -3194,7 +3216,7 @@ footer > p {
     grid-template-columns: 100px 1fr 100px;
   }
 
-  .grid-wrapper > * {
+  .grid-wrapper>* {
     grid-column: 2 / -2;
     min-width: 0;
   }
@@ -3219,7 +3241,7 @@ footer > p {
     margin: 0 0 0 5px;
   }
 
-  .grid-wrapper > .contact {
+  .grid-wrapper>.contact {
     padding: 60px 100px 55px;
     display: flex;
     align-items: center;
