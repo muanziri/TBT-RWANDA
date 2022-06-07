@@ -2,6 +2,7 @@
 const fs=require('fs');
 const { google } = require('googleapis');
 const genesisPodcast=require('./model/genesisPodcast')
+const UserRecording=require('./model/ibitekerezo')
 const key= require('./fetch-350015-b4ada057355d.json')
 var drive = google.drive("v3");
 var jwToken = new google.auth.JWT(
@@ -21,9 +22,8 @@ var jwToken = new google.auth.JWT(
 
 
 
-const uploadToTheDrivePodCast= (fileMetadata,media,stringedFilePath,user)=>{
-  console.log(user)
-drive.files.create({
+const uploadToTheDrivePodCast= (fileMetadata,media,stringedFilePath,user,folderId)=>{
+ drive.files.create({
   auth: jwToken,
   resource: fileMetadata,
   media: media,
@@ -35,7 +35,14 @@ drive.files.create({
   } else {
    
     console.log('File Id: ', file.data.id);
- 
+    new UserRecording({
+      AudioId:file.data.id,
+      UserName:user.userName,
+      ProfilePic:user.ProfilePhotoUrl,
+      FolderId:folderId
+    }).save().then((results)=>{
+      console.log('he is saved')
+    })
     fs.unlink(stringedFilePath,()=>{
       console.log("deleted")
     })

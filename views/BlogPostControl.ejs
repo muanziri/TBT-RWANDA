@@ -101,14 +101,14 @@
         </select>
       </div>
     </div>
-    <form style="display: none;" id="form1" action="/action_page.php">
+    <form style="display: none;" id="form1" method="post" action="/gossipAndNews">
       <div class="row">
         <h3>Authors Name</h3>
         <div class="col-25">
           <label for="fname">First Name</label>
         </div>
         <div class="col-75">
-          <input type="text" id="fname" name="firstname" placeholder="Your name..">
+          <input type="text" id="fname" name="firstname"/> 
         </div>
       </div>
       <div class="row">
@@ -136,34 +136,34 @@
 
       <div class="row">
         <div class="col-25">
-          <label for="fname">Image 1</label>
+          <label for="fname">ImageID 1</label>
         </div>
         <div class="col-75">
-          <input type="file" id="Image1" name="firstname">
+          <input type="text" id="Image1" name="Image1ID" placeholder="the drive Image id related to the story...."/>
         </div>
       </div>
       <div class="row">
         <div class="col-25">
-          <label for="fname">Image 2</label>
+          <label for="fname">ImageID 2</label>
         </div>
         <div class="col-75">
-          <input type="file" id="fname" name="Image2">
+           <input type="text" id="Image1" name="Image2ID" placeholder="the drive Image id related to the story...."/>
         </div>
       </div>
       <div class="row">
         <div class="col-25">
-          <label for="fname">Image 3</label>
+          <label for="fname">ImageID 3</label>
         </div>
         <div class="col-75">
-          <input type="file" id="fname" name="Image3" placeholder="Your name..">
+           <input type="text" id="Image1" name="Image3ID" placeholder="the drive Image id related to the story...."/>
         </div>
       </div>
       <div class="row">
         <div class="col-25">
-          <label for="fname">Image 4</label>
+          <label for="fname">ImageID 4</label>
         </div>
         <div class="col-75">
-          <input type="file" id="fname" name="Image4" placeholder="Your name..">
+           <input type="text" id="Image1" name="Image4ID" placeholder="the drive Image id related to the story...."/>
         </div>
       </div>
 
@@ -172,7 +172,7 @@
           <label for="subject">Paragraph</label>
         </div>
         <div class="col-75">
-          <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+          <textarea id="subject" name="Paragraph" placeholder="Write something.." style="height:200px"></textarea>
         </div>
       </div>
 
@@ -181,22 +181,7 @@
           <label for="subject">Paragraph2</label>
         </div>
         <div class="col-75">
-          <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-25">
-          <label for="country">Position On The landing Page</label>
-        </div>
-        <br>
-        <br>
-        <div class="col-75">
-          <select id="country" name="country">
-            <option>image 1</option>
-            <option>image 2</option>
-            <option>image 3</option>
-            <option>image 4</option>
-          </select>
+          <textarea id="subject" name="Paragraph2" placeholder="Write something.." style="height:200px"></textarea>
         </div>
       </div>
       <br>
@@ -207,7 +192,7 @@
           <label for="fname">Heading selected image</label>
         </div>
         <div class="col-75">
-          <input type="text" id="fname" name="firstname" placeholder="Your name..">
+          <input type="text" id="fname" name="SelectedHead"> 
         </div>
       </div>
       <div class="row">
@@ -218,7 +203,7 @@
         <br>
 
         <div class="col-75">
-          <input type="file" id="fname" name="firstname" placeholder="Your name..">
+           <input type="text" id="Image1" name="ImageXID" placeholder="the drive Image id related to the story...."/> 
         </div>
       </div>
 
@@ -226,37 +211,14 @@
         <input type="submit" value="Submit">
       </div>
     </form>
-    <form style="display: none;" id="form2" action="">
-      <div class="col-25">
-        <label for="fname">Heading</label>
-      </div>
-      <div class="col-75">
-        <input type="text" id="fname" name="Heading" placeholder="Heading..">
-      </div>
-      <br>
-      <br>
-      <br>
+    <form style="display: none;" id="form2" method="post" action="/showbizzTrendingPics">
       <div class="row">
-        <div class="col-25">
-          <label for="fname">Image 1</label>
-        </div>
-        <div class="col-75">
-          <input type="file" id="fname" name="firstname" placeholder="Your name..">
-        </div>
-      </div>
-
-      <div class="row">
-        <input type="submit" value="Submit">
-      </div>
-    </form>
-    <form style="display: none;" id="form3" action="/action_page.php">
-      <div class="row">
-        <h3>Authors Named</h3>
+        <h3>PhotoGrapher Names</h3>
         <div class="col-25">
           <label for="fname">First Name</label>
         </div>
         <div class="col-75">
-          <input type="text" id="fname" name="firstname" placeholder="Your name..">
+          <input type="text" id="fname" name="firstname"/> 
         </div>
       </div>
       <div class="row">
@@ -267,7 +229,265 @@
           <input type="text" id="lname" name="lastname" placeholder="Your last name..">
         </div>
       </div>
+      <h3>Content</h3>
+      <div class="col-25">
+        <label for="fname">Heading of trending pics 1</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="fname" name="Heading1" placeholder="Heading..">
+      </div>
+      <br>
+      <br>
+      <br>
+      <div class="row">
+        <div class="col-25">
+          <label for="fname">ImageID 1</label>
+        </div>
+        <div class="col-75">
+          <p >391.16X240</p>
+           <input type="text" id="Image1" name="Image1ID" placeholder="the drive Image id related to the story...."/> 
+        </div>
+      </div>
+      <div class="col-25">
+        <label for="fname">Heading of trending pics 2</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="fname" name="Heading2" placeholder="Heading..">
+      </div>
+      <br>
+      <br>
+      <br>
+      <div class="row">
+        <div class="col-25">
+          <label for="fname">ImageID 2</label>
+        </div>
+        <div class="col-75">
+          <p >391.16X240</p>
+           <input type="text" id="Image1" name="Image2ID" placeholder="the drive Image id related to the story...."/> 
+        </div>
+      </div>
+      <div class="col-25">
+        <label for="fname">Heading of trending pics 3</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="fname" name="Heading3" placeholder="Heading..">
+      </div>
+      <br>
+      <br>
+      <br>
+      <div class="row">
+        <div class="col-25">
+          <label for="fname">ImageID 3</label>
+        </div>
+        <div class="col-75">
+          <p >391.16X240</p>
+           <input type="text" id="Image1" name="Image3ID" placeholder="the drive Image id related to the story...."/> 
+        </div>
+      </div>
+      <div class="col-25">
+        <label for="fname">Heading of trending pics 4</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="fname" name="Heading4" placeholder="Heading..">
+      </div>
+      <br>
+      <br>
+      <br>
+      <div class="row">
+        <div class="col-25">
+          <label for="fname">ImageID 4</label>
+        </div>
+        <div class="col-75">
+          <p >391.16X240</p>
+           <input type="text" id="Image1" name="Image4ID" placeholder="the drive Image id related to the story...."/> 
+        </div>
+      </div>
+      <div class="col-25">
+        <label for="fname">Heading of trending pics 5</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="fname" name="Heading5" placeholder="Heading..">
+      </div>
+      <br>
+      <br>
+      <br>
+      <div class="row">
+        <div class="col-25">
+          <label for="fname">ImageID 5</label>
+        </div>
+        <div class="col-75">
+          <p >391.16X240</p>
+           <input type="text" id="Image1" name="Image5ID" placeholder="the drive Image id related to the story...."/> 
+        </div>
+      </div>
+      <div class="col-25">
+        <label for="fname">Heading of trending pics 6</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="fname" name="Heading6" placeholder="Heading..">
+      </div>
+      <br>
+      <br>
+      <br>
+      <div class="row">
+        <div class="col-25">
+          <label for="fname">ImageID 6</label>
+        </div>
+        <div class="col-75">
+          <p >391.16X240</p>
+           <input type="text" id="Image1" name="Image6ID" placeholder="the drive Image id related to the story...."/> 
+        </div>
+      </div>
+      <div class="col-25">
+        <label for="fname">Heading of trending pics 7</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="fname" name="Heading7" placeholder="Heading..">
+      </div>
+      <br>
+      <br>
+      <br>
+      <div class="row">
+        <div class="col-25">
+          <label for="fname">ImageID 7</label>
+        </div>
+        <div class="col-75">
+          <p >391.16X240</p>
+           <input type="text" id="Image1" name="Image7ID" placeholder="the drive Image id related to the story...."/> 
+        </div>
+      </div>
+      <div class="col-25">
+        <label for="fname">Heading of trending pics 8</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="fname" name="Heading8" placeholder="Heading..">
+      </div>
+      <br>
+      <br>
+      <br>
+      <div class="row">
+        <div class="col-25">
+          <label for="fname">ImageID 8</label>
+        </div>
+        <div class="col-75">
+          <p >391.16X240</p>
+           <input type="text" id="Image1" name="Image8ID" placeholder="the drive Image id related to the story...."/> 
+        </div>
+      </div>
+      <div class="col-25">
+        <label for="fname">Heading of trending pics 9</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="fname" name="Heading9" placeholder="Heading..">
+      </div>
+      <br>
+      <br>
+      <br>
+      <div class="row">
+        <div class="col-25">
+          <label for="fname">ImageID 9</label>
+        </div>
+        <div class="col-75">
+          <p >391.16X240</p>
+           <input type="text" id="Image1" name="Image9ID" placeholder="the drive Image id related to the story...."/> 
+        </div>
+      </div>
+      <div class="col-25">
+        <label for="fname">Heading of trending pics 10</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="fname" name="Heading10" placeholder="Heading..">
+      </div>
+      <br>
+      <br>
+      <br>
+      <div class="row">
+        <div class="col-25">
+          <label for="fname">ImageID 10</label>
+        </div>
+        <div class="col-75">
+          <p >391.16X240</p>
+           <input type="text" id="Image1" name="Image10ID" placeholder="the drive Image id related to the story...."/> 
+        </div>
+      </div>
+      <div class="col-25">
+        <label for="fname">Heading of trending pics 11</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="fname" name="Heading11" placeholder="Heading..">
+      </div>
+      <br>
+      <br>
+      <br>
+      <div class="row">
+        <div class="col-25">
+          <label for="fname">ImageID 11</label>
+        </div>
+        <div class="col-75">
+          <p >391.16X240</p>
+           <input type="text" id="Image1" name="Image11ID" placeholder="the drive Image id related to the story...."/> 
+        </div>
+      </div>
+      <div class="col-25">
+        <label for="fname">Heading of trending pics 12</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="fname" name="Heading12" placeholder="Heading..">
+      </div>
+      <br>
+      <br>
+      <br>
+      <div class="row">
+        <div class="col-25">
+          <label for="fname">ImageID 12</label>
+        </div>
+        <div class="col-75">
+          <p >391.16X240</p>
+           <input type="text" id="Image1" name="Image12ID" placeholder="the drive Image id related to the story...."/> 
+        </div>
+      </div>
+      <div class="col-25">
+        <label for="fname">Heading of trending pics 13</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="fname" name="Heading13" placeholder="Heading..">
+      </div>
+      <br>
+      <br>
+      <br>
+      <div class="row">
+        <div class="col-25">
+          <label for="fname">ImageID 13</label>
+        </div>
+        <div class="col-75">
+          <p >391.16X240</p>
+           <input type="text" id="Image13" name="Image13ID" placeholder="the drive Image id related to the story...."/> 
+        </div>
+      </div>
 
+      <div class="row">
+        <input type="submit" value="Submit">
+      </div>
+    </form>
+    <form style="display: none;" id="form3" method="post" action="/latestShowbizz">
+    
+      <div class="row">
+        <h3>Authors Name</h3>
+        <div class="col-25">
+          <label for="fname">First Name</label>
+        </div>
+        <div class="col-75">
+          <input type="text" id="fname" name="firstname"/> 
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="lname">Last Name</label>
+        </div>
+        <div class="col-75">
+          <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+        </div>
+      </div>
       <h3>Content To be published</h3>
 
 
@@ -284,34 +504,34 @@
 
       <div class="row">
         <div class="col-25">
-          <label for="fname">Image 1</label>
+          <label for="fname">ImageID 1</label>
         </div>
         <div class="col-75">
-          <input type="file" id="fname" name="firstname" placeholder="Your name..">
+           <input type="text" id="Image1" name="Image1ID" placeholder="the drive Image id related to the story...."/> 
         </div>
       </div>
       <div class="row">
         <div class="col-25">
-          <label for="fname">Image 2</label>
+          <label for="fname">ImageID 2</label>
         </div>
         <div class="col-75">
-          <input type="file" id="fname" name="firstname" placeholder="Your name..">
+           <input type="text" id="Image1" name="Image2ID" placeholder="the drive Image id related to the story...."/>
         </div>
       </div>
       <div class="row">
         <div class="col-25">
-          <label for="fname">Image 3</label>
+          <label for="fname">ImageID 3</label>
         </div>
         <div class="col-75">
-          <input type="file" id="fname" name="image3">
+           <input type="text" id="Image1" name="Image3ID" placeholder="the drive Image id related to the story...."/>
         </div>
       </div>
       <div class="row">
         <div class="col-25">
-          <label for="fname">Image 4</label>
+          <label for="fname">ImageID 4</label>
         </div>
         <div class="col-75">
-          <input type="file" id="fname" name="image4">
+           <input type="text" id="Image1" name="Image4ID" placeholder="the drive Image id related to the story...."/>
         </div>
       </div>
 
@@ -320,7 +540,7 @@
           <label for="subject">Paragraph</label>
         </div>
         <div class="col-75">
-          <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+          <textarea id="subject" name="Paragraph" placeholder="Write something.." style="height:200px"></textarea>
         </div>
       </div>
       <div class="row">
@@ -331,21 +551,6 @@
           <textarea id="subject" name="Paragraph2" placeholder="Write something.." style="height:200px"></textarea>
         </div>
       </div>
-      <div class="row">
-        <div class="col-25">
-          <label for="country">Position On The landing Page</label>
-        </div>
-        <br>
-        <br>
-        <div class="col-75">
-          <select id="country" name="country">
-            <option>image 1</option>
-            <option>image 2</option>
-            <option>image 3</option>
-            <option>image 4</option>
-          </select>
-        </div>
-      </div>
       <br>
       <br>
       <div class="row">
@@ -353,7 +558,7 @@
           <label for="fname">Heading selected image</label>
         </div>
         <div class="col-75">
-          <input type="text" id="fname" name="firstname" placeholder="Your name..">
+          <input type="text" id="fname" name="SelectedHead"/>
         </div>
       </div>
       <div class="row">
@@ -361,7 +566,7 @@
           <label for="fname">selected Image</label>
         </div>
         <div class="col-75">
-          <input type="file" id="fname" name="firstname" placeholder="Your name..">
+           <input type="text" id="Image1" name="ImageXID" placeholder="the drive Image id related to the story...."/> 
         </div>
       </div>
 
@@ -381,9 +586,11 @@
       } else if (SelectedValue == 'Gossip and news') {
         document.getElementById('form1').style.display = 'block';
         document.getElementById('form2').style.display = 'none';
+        document.getElementById('form3').style.display = 'none';
       } else if (SelectedValue == 'latest showbizz') {
         document.getElementById('form3').style.display = 'block';
         document.getElementById('form1').style.display = 'none';
+        document.getElementById('form2').style.display = 'none';
       }
     }
     function muna2() {

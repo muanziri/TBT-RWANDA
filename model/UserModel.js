@@ -7,10 +7,10 @@ const UserSchema = new Schema({
         type: String,
         required: true
     },
-    currentPlay: {
+    AthautizedInIkiganiro: {
         type: String,
         required: true,
-        default:'play'
+        default:'unauthorized'
         
     },
     Email: {
@@ -36,6 +36,11 @@ const UserSchema = new Schema({
         default:0
     },
     TotalNumberOfShares: {
+        type: Number,
+        required: true,
+        default:0
+    },
+    Clicks: {
         type: Number,
         required: true,
         default:0

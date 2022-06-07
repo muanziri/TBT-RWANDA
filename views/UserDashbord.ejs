@@ -14,7 +14,7 @@
 
   <!-- Web Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Lato:300,400,400i|Montserrat:400,700" rel="stylesheet">
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <!-- Vendor Styles -->
   <link href="../static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
   <link href="../static/css/animate.css" rel="stylesheet" type="text/css" />
@@ -23,6 +23,7 @@
   <link href="../static/vendor/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css" />
   <link href="../static/vendor/swiper/swiper.min.css" rel="stylesheet" type="text/css" />
   <link href="../static/vendor/cubeportfolio/css/cubeportfolio.min.css" rel="stylesheet" type="text/css" />
+  <link href="../static/css/audioRecorder.css" rel="stylesheet" type="text/css" />
 
   <!-- Theme Styles -->
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -45,8 +46,8 @@
 
   <!--========== HEADER ==========-->
   <header
-    style="background-image: linear-gradient(to right ,white,rgb(98, 24, 2)); border-radius:  0px  0px 15px 15px;z-index: 1;"
-    class="navbar-fixed-top s-header js__header-sticky ">
+    style="background-image: linear-gradient(to right ,white,chocolate); border-radius:  0px  0px 15px 15px;z-index: 1;"
+    class="navbar-fixed-top s-header  ">
     <!-- Navbar -->
     <div class="s-header__navbar">
       <div class="s-header__container">
@@ -56,15 +57,15 @@
             <div class="s-header__logo">
               <a href="index.html" class="s-header__logo-link">
                 <img class="s-header__logo-img s-header__logo-img-default" style="width: 50px;height: 50px;"
-                  src="../static/img/newImages/logo3.jpg" alt="TBT Rwanda Logo">
+                  src="../static/img/newImages/NewLogo2.png" alt="TBT Rwanda Logo">
                 <img class="s-header__logo-img s-header__logo-img-shrink" style="width: 50px;height: 50px;"
-                  src="../static/img/newImages/logo3.jpg" alt="TBT Rwanda Logo">
+                  src="../static/img/newImages/NewLogo2.png" alt="TBT Rwanda Logo">
               </a>
             </div>
             <!-- End Logo -->
           </div>
           <center>
-            <h1 id="Onews">Hi <%=user.userName%>
+            <h1 id="Onews"><b>Hi <%=user.userName%></b>
             </h1>
           </center>
           <div class="s-header__navbar-row-col">
@@ -91,22 +92,16 @@
           <!-- Menu List -->
           <ul class="list-unstyled s-header__nav-menu">
             <li class="s-header__nav-menu-item"><a
-                class="s-header__nav-menu-link s-header__nav-menu-link-divider -is-active"
-                href="index.html">Corporate</a></li>
+                class="s-header__nav-menu-link s-header__nav-menu-link-divider -is-active" href="/">News</a></li>
+            <li class="s-header__nav-menu-item"><a class="s-header__nav-menu-link s-header__nav-menu-link-divider "
+                href="index.html">Community Podcast</a></li>
+            <li class="s-header__nav-menu-item"><a class="s-header__nav-menu-link s-header__nav-menu-link-divider "
+                href="index.html">Make money With us</a></li>
             <li class="s-header__nav-menu-item"><a class="s-header__nav-menu-link s-header__nav-menu-link-divider"
-                href="index_app_landing.html">App Landing</a></li>
-            <li class="s-header__nav-menu-item"><a class="s-header__nav-menu-link s-header__nav-menu-link-divider"
-                href="index_portfolio.html">Portfolio</a></li>
-            <li class="s-header__nav-menu-item"><a class="s-header__nav-menu-link s-header__nav-menu-link-divider"
-                href="index_events.html">Events</a></li>
-            <li class="s-header__nav-menu-item"><a class="s-header__nav-menu-link s-header__nav-menu-link-divider"
-                href="index_lawyer.html">Lawyer</a></li>
-            <li class="s-header__nav-menu-item"><a class="s-header__nav-menu-link s-header__nav-menu-link-divider"
-                href="index_clinic.html">Clinic</a></li>
-            <li class="s-header__nav-menu-item"><a class="s-header__nav-menu-link s-header__nav-menu-link-divider"
-                href="index_coming_soon.html">Coming Soon</a></li>
-          </ul>
-          <!-- End Menu List -->
+                href="index.html">Your Dashboard</a></li>
+
+
+            <!-- End Menu List -->
 
         </div>
       </nav>
@@ -156,13 +151,16 @@
   <center>
     <div id="id01" class="modal">
       <!-- <form action=""method="post"> -->
-      <div class="modal-content animate">
+
+      <div style="display: none;" id="recoderx" class="modal-content animate">
 
         <div class="imgcontainer">
           <span onclick="document.getElementById('id01').style.display='none'" class="close"
             title="Close Modal">&times;</span>
-
         </div>
+        <button
+          onclick="document.getElementById('uploader').style.display='block';document.getElementById('recoderx').style.display='none'">click
+          to upload the podcast</button>
         <div id="controls">
           <button id="pauseButton" disabled>Pause</button>
           <button
@@ -178,6 +176,28 @@
         <ol id="recordingsList"></ol>
         <button type="submit">Submit</button>
       </div>
+      <div id="uploader" class="modal-content animate">
+        <span onclick="document.getElementById('id01').style.display='none'" class="close"
+          title="Close Modal">&times;</span>
+
+        <br>
+        <button
+          onclick="document.getElementById('recoderx').style.display='block';document.getElementById('uploader').style.display='none'">click
+          to record the podcast</button>
+        <br>
+        <form id="initiateWER" method="post" action="/DirectPodcastControlInnitiate" enctype="multipart/form-data">
+
+          <h6>upload your podcast here</h6>
+
+          <center> <input style="width: 60%;border:none ;color:black" type="file" id="menu_images" name="podcast">
+          </center>
+
+        </form>
+        <h6 style="display: none;" id="displayInfo">Remaining seconds to upload</h6>
+        <h5 id="displaySec"></h5>
+        <button id="initiateWERButton">initiate</button>
+        <button style="display: none;" id="uploadButton">Upload</button>
+      </div>
       <!-- </form> -->
 
 
@@ -192,7 +212,7 @@
   <div style="width: 100%;height: fit-content; margin-left: 12px; margin-right: 12px; z-index: -1;"
     class="container text-center">
     <div class="row">
-      <div class="col-sm-3 well">
+      <div style="background-color: rgb(240, 160, 102);" class="col-sm-3 well">
         <div style="height: fit-content;" class="well">
           <p style="color:black">My Profile</p>
           <img src="<%=user.ProfilePhotoUrl%> " class="img-circle" height="65" width="65" alt="Avatar">
@@ -200,275 +220,280 @@
           <br>
           <br>
           <h5>likes</h5>
-          <h4></h4>
+          <h4>0</h4>
           <br>
-          <h5>Posts</h5>
-          <h4></h4>
+          <h5>Narations</h5>
+          <h4>0</h4>
           <br>
-          <h5>recomends</h5>
-          <h4></h4>
+          <h5>message</h5>
+          <p style="font-size: 20px;">wait, You still have in front.if your turn reach you will see a button with the
+            word <b>narrate</b> ,it is the one you will use</p>
           <br>
           <br>
-          <h5>current Play</h5>
+          <div class="row">
+            <div class="col-sm-9">
+              <h6>Make Money with us by sharing this abstrack youtube link</h6>
+              <div class="well">
 
-          <div style="background-color: rgba(255, 0, 0, 0); width:100%;height:fit-content;">
-            <div
-              style="position:absolute; left:0;background-color: rgba(0, 0, 0, 0); width:100%;height: 10%; z-index: 0;padding-top: 8%; ">
+              </div>
+              <p>more clicks on the above link more money</p>
+              <p><b>clicks you have collected</b></p>
+              <P><b><i>money estimated from your clicks</i></b></P>
+
             </div>
-            <form action="" method="post">
-              <input
-                style="background-color: rgb(205, 205, 205); border:none; z-index: -1; font-size: large; text-align: center;font-weight: 900;"
-                value="we are present" type="text" name="seasonTitle" placeholder="Search for names.." id="myInput2">
-            </form>
           </div>
-        </div>
-        <div class="well">
-          <p><a href="#">Interests</a></p>
-          <p>
-            <span class="label label-default">News</span>
-            <span class="label label-primary">W3Schools</span>
-            <span class="label label-success">Labels</span>
-            <span class="label label-info">Football</span>
-            <span class="label label-warning">Gaming</span>
-            <span class="label label-danger">Friends</span>
-          </p>
-          <h5>change the current Play</h5>
-          <input class="w3-input w3-border w3-padding" type="text" placeholder="Click to change the play" id="myInput"
-            onfocus="myFunction2()" onkeyup="myFunction()">
 
-          <ul style="display:none;" class="w3-ul w3-margin-top" id="myUL">
-            <li onclick=" myFunction23('this')">Adele</li>
-            <li>Agnes</li>
-            <li>Billy</li>
-            <li>Bob</li>
-            <li>Calvin</li>
-            <li>Christina</li>
-            <li>Cindy</li>
-          </ul>
         </div>
-        <p><a href="#">Link</a></p>
-        <p><a href="#">Link</a></p>
-        <p><a href="#">Link</a></p>
+
+
       </div>
       <div class="col-sm-7">
 
 
-        <h3>Your recordings</h3>
+
         <div class="row">
-          <div class="col-sm-3">
-            <div class="well">
-              <p>John</p>
-              <img src="bird.jpg" class="img-circle" height="55" width="55" alt="Avatar">
-            </div>
-          </div>
           <div class="col-sm-9">
+            
+            <% if(genes||recordings) {%> 
+              <h3><%=genes.PlayNames%></h3> 
             <div class="well">
-              <p>Just Forgot that I had to mention something about someone to someone about how I forgot something, but
-                now I forgot it. Ahh, forget it! Or wait. I remember.... no I don't.</p>
+              <% recordings.forEach((element) => {%>
+              <div class="row">
+                <div class="col-sm-3">
+                  <div class="well">
+                    <img  src="<%=element.ProfilePic%>" class="img-circle" height="55" width="55" alt="Avatar">
+                  </div>
+                </div>
+                <div class="col-sm-9">
+                  <div class="well ">
+                    <div class="audio-player">
+                      <audio style="width: 100%; "
+                        src="https://docs.google.com/uc?export=download&id=<%=element.AudioId%>" controls></audio>
+                       
+                      <p style="text-align: right;">commented by <b><%=element.UserName%></b>
+                        <br>
+                        <form  style="display: none;"id="addlikes" action="/addlikes" method="post">
+                         <input type="text" name="addlikestouser" value="<%=element.UserName%>" id="">
+                         <input type="text" name="addlikestouser" value="<%=element.AudioId%>" id="">
+                        </form>
+                        <button style="background-color: rgb(225, 121, 10);border-radius: 5px; border: none; color: antiquewhite; font-weight: 800;"><i class="fa fa-check"></i><b>like 0</b></button>
+                      </p>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+              <% }); %> 
             </div>
+            
+            <% } %> 
           </div>
         </div>
-        <div class="row">
-          <div class="col-sm-3">
-            <div class="well">
-              <p>Bo</p>
-              <img src="bandmember.jpg" class="img-circle" height="55" width="55" alt="Avatar">
-            </div>
-          </div>
-          <div class="col-sm-9">
-            <div class="well">
-              <p>Just Forgot that I had to mention something about someone to someone about how I forgot something, but
-                now I forgot it. Ahh, forget it! Or wait. I remember.... no I don't.</p>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-sm-3">
-            <div class="well">
-              <p>Jane</p>
-              <img src="bandmember.jpg" class="img-circle" height="55" width="55" alt="Avatar">
-            </div>
-          </div>
-          <div class="col-sm-9">
-            <div class="well">
-              <p>Just Forgot that I had to mention something about someone to someone about how I forgot something, but
-                now I forgot it. Ahh, forget it! Or wait. I remember.... no I don't.</p>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-sm-3">
-            <div class="well">
-              <p>Anja</p>
-              <img src="bird.jpg" class="img-circle" height="55" width="55" alt="Avatar">
-            </div>
-          </div>
-          <div class="col-sm-9">
-            <div class="well">
-              <p>Just Forgot that I had to mention something about someone to someone about how I forgot something, but
-                now I forgot it. Ahh, forget it! Or wait. I remember.... no I don't.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-2 well">
-        <div class="thumbnail">
-          <p>Upcoming plays</p>
-          <img src="paris.jpg" alt="Paris" width="400" height="300">
-          <p><strong>Paris</strong></p>
-          <p>Fri. 27 November 2015</p>
-        </div>
-        <div class="well">
-          <p>ADS</p>
-        </div>
-        <div class="well">
-          <p>ADS</p>
-        </div>
-      </div>
-    </div>
-  </div>
 
 
 
-  <!--========== FOOTER ==========-->
-  <footer class="g-bg-color--dark">
-    <!-- Links -->
-    <div class="g-hor-divider__dashed--white-opacity-lightest">
-      <div class="container g-padding-y-80--xs">
-        <div class="row">
-          <div class="col-sm-2 g-margin-b-20--xs g-margin-b-0--md">
-            <ul class="list-unstyled g-ul-li-tb-5--xs g-margin-b-0--xs">
-              <li><a class="g-font-size-15--xs g-color--white-opacity"
-                  href="http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes">Home</a>
-              </li>
-              <li><a class="g-font-size-15--xs g-color--white-opacity"
-                  href="http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes">About</a>
-              </li>
-              <li><a class="g-font-size-15--xs g-color--white-opacity"
-                  href="http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes">Work</a>
-              </li>
-              <li><a class="g-font-size-15--xs g-color--white-opacity"
-                  href="http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes">Contact</a>
-              </li>
-            </ul>
+        <div id="sideBat" class="col-sm-2 well">
+          <div class="well">
+            <h6>Ikiganiro</h6>
+            <b><p><%=genes.PlayNames%></p></b>
           </div>
-          <div class="col-sm-2 g-margin-b-20--xs g-margin-b-0--md">
-            <ul class="list-unstyled g-ul-li-tb-5--xs g-margin-b-0--xs">
-              <li><a class="g-font-size-15--xs g-color--white-opacity"
-                  href="http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes">Twitter</a>
-              </li>
-              <li><a class="g-font-size-15--xs g-color--white-opacity"
-                  href="http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes">Facebook</a>
-              </li>
-              <li><a class="g-font-size-15--xs g-color--white-opacity"
-                  href="http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes">Instagram</a>
-              </li>
-              <li><a class="g-font-size-15--xs g-color--white-opacity"
-                  href="http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes">YouTube</a>
-              </li>
-            </ul>
+          <div class="thumbnail">
+            <p>Upcoming plays</p>
+            <img src="paris.jpg" alt="Paris" width="400" height="300">
+            <p><strong>Paris</strong></p>
+            <p>Fri. 27 November 2015</p>
           </div>
-          <div class="col-sm-2 g-margin-b-40--xs g-margin-b-0--md">
-            <ul class="list-unstyled g-ul-li-tb-5--xs g-margin-b-0--xs">
-              <li><a class="g-font-size-15--xs g-color--white-opacity"
-                  href="http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes">Subscribe
-                  to Our Newsletter</a></li>
-              <li><a class="g-font-size-15--xs g-color--white-opacity"
-                  href="http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes">Privacy
-                  Policy</a></li>
-              <li><a class="g-font-size-15--xs g-color--white-opacity"
-                  href="http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes">Terms
-                  &amp; Conditions</a></li>
-            </ul>
+          <div class="well">
+            <p>ADS</p>
           </div>
-          <div
-            class="col-md-4 col-md-offset-2 col-sm-5 col-sm-offset-1 s-footer__logo g-padding-y-50--xs g-padding-y-0--md">
-            <h3 class="g-font-size-18--xs g-color--white">TBT Rwanda</h3>
-            <p class="g-color--white-opacity">We are a creative studio focusing on culture, luxury,
-              editorial &amp; art. Somewhere between sophistication and simplicity.</p>
+          <div class="well">
+            <p>ADS</p>
           </div>
         </div>
       </div>
     </div>
-    <!-- End Links -->
 
-    <!-- Copyright -->
-    <div class="container g-padding-y-50--xs">
-      <div class="row">
-        <div class="col-xs-6">
-          <a href="index.html">
-            <img class="g-width-100--xs g-height-auto--xs" src="../static/img/newImages/logo3.jpg"
-              alt="TBT Rwanda Logo">
-          </a>
-        </div>
-        <div class="col-xs-6 g-text-right--xs">
-          <p class="g-font-size-14--xs g-margin-b-0--xs g-color--white-opacity-light"><a
-              href="http://keenthemes.com/preview/Megakit/">sdnksdcnskjdcnskdjn</p>
+
+
+    <!--========== FOOTER ==========-->
+    <footer style="width: 100%;margin-left:0%;position:absolute;left: 0;" class="g-bg-color--dark">
+      <!-- Links -->
+      <div class="g-hor-divider__dashed--white-opacity-lightest">
+        <div class="container g-padding-y-80--xs">
+          <div class="row">
+            <div class="col-sm-2 g-margin-b-20--xs g-margin-b-0--md">
+              <ul class="list-unstyled g-ul-li-tb-5--xs g-margin-b-0--xs">
+                <li><a class="g-font-size-15--xs g-color--white-opacity"
+                    href="http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes">Home</a>
+                </li>
+                <li><a class="g-font-size-15--xs g-color--white-opacity"
+                    href="http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes">About</a>
+                </li>
+                <li><a class="g-font-size-15--xs g-color--white-opacity"
+                    href="http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes">Work</a>
+                </li>
+                <li><a class="g-font-size-15--xs g-color--white-opacity"
+                    href="http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes">Contact</a>
+                </li>
+              </ul>
+            </div>
+            <div class="col-sm-2 g-margin-b-20--xs g-margin-b-0--md">
+              <ul class="list-unstyled g-ul-li-tb-5--xs g-margin-b-0--xs">
+                <li><a class="g-font-size-15--xs g-color--white-opacity"
+                    href="http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes">Twitter</a>
+                </li>
+                <li><a class="g-font-size-15--xs g-color--white-opacity"
+                    href="http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes">Facebook</a>
+                </li>
+                <li><a class="g-font-size-15--xs g-color--white-opacity"
+                    href="http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes">Instagram</a>
+                </li>
+                <li><a class="g-font-size-15--xs g-color--white-opacity"
+                    href="http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes">YouTube</a>
+                </li>
+              </ul>
+            </div>
+            <div class="col-sm-2 g-margin-b-40--xs g-margin-b-0--md">
+              <ul class="list-unstyled g-ul-li-tb-5--xs g-margin-b-0--xs">
+                <li><a class="g-font-size-15--xs g-color--white-opacity"
+                    href="http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes">Subscribe
+                    to Our Newsletter</a></li>
+                <li><a class="g-font-size-15--xs g-color--white-opacity"
+                    href="http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes">Privacy
+                    Policy</a></li>
+                <li><a class="g-font-size-15--xs g-color--white-opacity"
+                    href="http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes">Terms
+                    &amp; Conditions</a></li>
+              </ul>
+            </div>
+            <div
+              class="col-md-4 col-md-offset-2 col-sm-5 col-sm-offset-1 s-footer__logo g-padding-y-50--xs g-padding-y-0--md">
+              <h3 class="g-font-size-18--xs g-color--white">TBT Rwanda</h3>
+              <p class="g-color--white-opacity">We are a creative studio focusing on culture, luxury,
+                editorial &amp; art. Somewhere between sophistication and simplicity.</p>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-    <!-- End Copyright -->
-  </footer>
-  <!--========== END FOOTER ==========-->
+      <!-- End Links -->
 
-  <!-- Back To Top -->
-  <a href="javascript:void(0);" class="s-back-to-top js__back-to-top"></a>
+      <!-- Copyright -->
+      <div class="container g-padding-y-50--xs">
+        <div class="row">
+          <div class="col-xs-6">
+            <a href="index.html">
+              <img class="g-width-100--xs g-height-auto--xs" src="../static/img/newImages/NewLogo2.png"
+                alt="TBT Rwanda Logo">
+            </a>
+          </div>
+          <div class="col-xs-6 g-text-right--xs">
+            <p class="g-font-size-14--xs g-margin-b-0--xs g-color--white-opacity-light"><a
+                href="http://keenthemes.com/preview/Megakit/">sdnksdcnskjdcnskdjn</p>
+          </div>
+        </div>
+      </div>
+      <!-- End Copyright -->
+    </footer>
+    <!--========== END FOOTER ==========-->
 
-  <!--========== JAVASCRIPTS (Load javascripts at bottom, this will reduce page load time) ==========-->
-  <!-- Vendor -->
-  <script type="text/javascript" src="../static/vendor/jquery.min.js"></script>
-  <script type="text/javascript" src="../static/vendor/jquery.migrate.min.js"></script>
-  <script type="text/javascript" src="../static/vendor/bootstrap/js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="../static/vendor/jquery.smooth-scroll.min.js"></script>
-  <script type="text/javascript" src="../static/vendor/jquery.back-to-top.min.js"></script>
-  <script type="text/javascript" src="../static/vendor/scrollbar/jquery.scrollbar.min.js"></script>
-  <script type="text/javascript" src="../static/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+    <!-- Back To Top -->
+    <a href="javascript:void(0);" class="s-back-to-top js__back-to-top"></a>
 
-  <script type="text/javascript" src="../static/vendor/waypoint.min.js"></script>
-  <script type="text/javascript" src="../static/vendor/counterup.min.js"></script>
+    <!--========== JAVASCRIPTS (Load javascripts at bottom, this will reduce page load time) ==========-->
+    <!-- Vendor -->
+    <script type="text/javascript" src="../static/vendor/jquery.min.js"></script>
+    <script type="text/javascript" src="../static/vendor/jquery.migrate.min.js"></script>
+    <script type="text/javascript" src="../static/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../static/vendor/jquery.smooth-scroll.min.js"></script>
+    <script type="text/javascript" src="../static/vendor/jquery.back-to-top.min.js"></script>
+    <script type="text/javascript" src="../static/vendor/scrollbar/jquery.scrollbar.min.js"></script>
+    <script src="../static/js/newJS/app.js"></script>
+    <script src="../static/js/newJS/recorder.js"></script>
+    <!-- General Components and Settings -->
+    <script type="text/javascript" src="../static/js/global.min.js"></script>
+    <script type="text/javascript" src="../static/js/components/header-sticky.min.js"></script>
+    <script type="text/javascript" src="../static/js/components/scrollbar.min.js"></script>
+    <script type="text/javascript" src="../static/js/audioPlayer.js"></script>
+    <script>
+      document.getElementById("menu_images").onchange = function () {
+        var reader = new FileReader();
+        if (this.files[0].size > 528385000) {
+          alert("audio Size should not be greater than 500Kb");
+          $("#menu_image").attr("src", "blank");
+          $("#menu_image").hide();
+          $('#menu_images').wrap('<form>').closest('form').get(0).reset();
+          $('#menu_images').unwrap();
+          return false;
+        }
+        if (this.files[0].type.indexOf("audio") == -1) {
+          alert("Invalid Input .Audio only accepted");
+          $("#menu_image").attr("src", "blank");
+          $("#menu_image").hide();
+          $('#menu_images').wrap('<form>').closest('form').get(0).reset();
+          $('#menu_images').unwrap();
+          return false;
+        }
 
-  <!-- General Components and Settings -->
-  <script type="text/javascript" src="../static/js/global.min.js"></script>
-  <script type="text/javascript" src="../static/js/components/header-sticky.min.js"></script>
-  <script type="text/javascript" src="../static/js/components/scrollbar.min.js"></script>
-  <script type="text/javascript" src="../static/js/components/magnific-popup.min.js"></script>
-  <script type="text/javascript" src="../static/js/components/portfolio-3-col.min.js"></script>
-  <script type="text/javascript" src="../static/js/newJS/recorder.js"></script>
-  <script type="text/javascript" src="../static/js/newJS/app.js"></script>
+        // read the image file as a data URL.
+        reader.readAsDataURL(this.files[0]);
+      };
+      let timeleft2 = 90;
 
-  <script>
+      function importantFunc() {
+        let downloadTimer = setInterval(function () {
+          if (timeleft2 <= 0) {
+            clearInterval(downloadTimer);
+            document.getElementById("initiateWER").setAttribute('action', '/ToTheDrive2')
+            document.getElementById("uploadButton").style.display = 'block'
+            document.getElementById("displaySec").style.display = 'none'
+          }
 
-    function myFunction23(name) {
-      document.getElementById("myInput2").setAttribute('value', name)
-    }
-    function myFunction2() {
-      document.getElementById("myUL").style.display = 'block'
-    }
-    function myFunction() {
-      var input, filter, ul, li, a, i;
-      input = document.getElementById("myInput");
-      filter = input.value.toUpperCase();
-      ul = document.getElementById("myUL");
-      li = ul.getElementsByTagName("li");
-      for (i = 0; i < li.length; i++) {
-        txtValue = li[i].textContent || li[i].innerText;
-        if (txtValue.toUpperCase().indexOf(filter) > -1) {
-          li[i].style.display = "";
-        } else {
-          li[i].style.display = "none";
+          document.getElementById("displaySec").innerHTML = timeleft2 -= 1;;
+
+
+        }, 1000);
+      }
+      document.getElementById('initiateWERButton').addEventListener('click', () => {
+        document.getElementById("initiateWER").submit();
+        document.getElementById('initiateWERButton').style.display = 'none'
+        document.getElementById("displayInfo").style.display = 'block'
+        importantFunc();
+
+      })
+      document.getElementById("uploadButton").addEventListener('click', () => {
+        document.getElementById("initiateWER").submit();
+      })
+      function myFunction23(name) {
+        document.getElementById("myInput2").setAttribute('value', name)
+      }
+      function myFunction2() {
+        document.getElementById("myUL").style.display = 'block'
+      }
+      function myFunction() {
+        var input, filter, ul, li, a, i;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        ul = document.getElementById("myUL");
+        li = ul.getElementsByTagName("li");
+        for (i = 0; i < li.length; i++) {
+          txtValue = li[i].textContent || li[i].innerText;
+          if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+          } else {
+            li[i].style.display = "none";
+          }
         }
       }
-    }
-    var modal = document.getElementById('id01');
+      var modal = document.getElementById('id01');
 
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function (event) {
-      if (event.target == modal) {
-        modal.style.display = "none";
+      // When the user clicks anywhere outside of the modal, close it
+      window.onclick = function (event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
       }
-    }
-  </script>
-  <!--========== END JAVASCRIPTS ==========-->
+    </script>
+    <!--========== END JAVASCRIPTS ==========-->
 
 </body>
 <!-- End Body -->

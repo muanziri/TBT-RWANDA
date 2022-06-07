@@ -4,7 +4,12 @@ const express=require('express');
 const multer=require('multer')
 const mongoose=require('mongoose');
 const passport=require('passport')
-
+const latestShowBizz=require('./model/latestShowbizz')
+const NewUrlTobeShared=require('./model/urlForMoney')
+const UserRecording=require('./model/ibitekerezo')
+const gossipAndNews=require('./model/gossipAndNews')
+//var MemoryFileSystem = require("memory-fs")
+const showbizzTrendings=require('./model/showbizzTrendingPics')
 const genesis=require('./model/genesisPodcast')
 const cookieSession=require('cookie-session')
 const flash=require('express-flash')
@@ -18,7 +23,7 @@ const upload=multer();
 const app=express();
 require('./athentications/authfacebook')
 require('./athentications/authGoogle')
-const DB="mongodb+srv://TheMediaGroup:5x0dxqz5z9ENizFi@cluster0.mdy6t.mongodb.net/TheMediaGroup1?retryWrites=true&w=majority";
+const DB="mongodb+srv://TheMediaGroup:5x0dxqz5z9ENizFi@cluster0.mdy6t.mongodb.net/TheUnitedMediaGroup1?retryWrites=true&w=majority";
 mongoose.connect(DB,{ useNewUrlParser:true,useUnifiedTopology:true})
   .then((results)=>{
 
@@ -67,18 +72,124 @@ app.get('/auth/google/failure',(req,res)=>{
 })
 
 app.get('/',(req,res)=>{
-    res.render('news')
+  latestShowBizz.find().then((results)=>{
+    gossipAndNews.find().then((results2)=>{
+      showbizzTrendings.find().then((results3)=>{
+        
+    res.render('news',{latestShowbizzs:results,GosssipNews:results2,trendingPics:results3})
+  })
 })
+})
+})
+
+app.post('/gossipAndNews',(req,res)=>{
+  //console.log(req.body)
+  new gossipAndNews({
+    Heading:req.body.Heading,
+    Image1ID:req.body.Image1ID,
+    Image2ID:req.body.Image2ID,
+    Image3ID:req.body.Image3ID,
+    Image4ID:req.body.Image4ID,
+    Paragraph:req.body.Paragraph,
+    Paragraph2:req.body.Paragraph2,
+    SelectedHead:req.body.SelectedHead,
+    ImageXID:req.body.ImageXID,
+    Author:req.body.firstname+"  "+req.body.lastname
+  }).save().then((results)=>{
+    console.log('saved to the database');
+    //res.redirect('/BlogPostControl')
+  }).catch((err)=>{
+     if(err)throw err
+  })
+
+})
+app.post('/latestShowbizz',(req,res)=>{
+ // console.log(req.body)
+  new latestShowBizz({
+    Heading:req.body.Heading,
+    Image1ID:req.body.Image1ID,
+    Image2ID:req.body.Image2ID,
+    Image3ID:req.body.Image3ID,
+    Image4ID:req.body.Image4ID,
+    Paragraph:req.body.Paragraph,
+    Paragraph2:req.body.Paragraph2,
+    SelectedHead:req.body.SelectedHead,
+    ImageXID:req.body.ImageXID,
+    Author:req.body.firstname+"  "+req.body.lastname
+  }).save().then((results)=>{
+    console.log('saved to the database');
+    //res.redirect('/BlogPostControl')
+  }).catch((err)=>{
+    if(err)throw err
+  })
+  
+})
+app.post('/showbizzTrendingPics',(req,res)=>{
+  console.log(req.body)
+  new showbizzTrendings({
+    Heading1: req.body.Heading1,
+    Image1ID: req.body.Image1ID,
+    Heading2: req.body.Heading2,
+    Image2ID: req.body.Image2ID,
+    Heading3: req.body.Heading3,
+    Image3ID: req.body.Image3ID,
+    Heading4: req.body.Heading4,
+    Image4ID: req.body.Image4ID,
+    Heading5: req.body.Heading5,
+    Image5ID: req.body.Image5ID,
+    Heading6: req.body.Heading6,
+    Image6ID: req.body.Image6ID,
+    Heading7: req.body.Heading7,
+    Image7ID: req.body.Image7ID,
+    Heading8: req.body.Heading8,
+    Image8ID: req.body.Image8ID,
+    Heading9: req.body.Heading9,
+    Image9ID: req.body.Image9ID,
+    Heading10: req.body.Heading10,
+    Image10ID: req.body.Image10ID,
+    Heading11: req.body.Heading11,
+    Image11ID: req.body.Image11ID,
+    Heading12: req.body.Heading12,
+    Image12ID: req.body.Image12ID,
+    Heading13: req.body.Heading13,
+    Image13ID: req.body.Image13ID,
+    ImageBy:req.body.firstname+" "+req.body.lastname
+  
+  }).save().then((results)=>{
+    console.log('saved')
+    
+  }).catch((err)=>{
+    if (err) throw err
+  })
+})
+app.post('/NewUrlTobeShared',(req,res)=>{
+  new NewUrlTobeShared({
+   UrlTobeShared:req.body.NewUrlTobeSharedred
+  }).save().then((results)=>{
+    console.log('the url is kept')
+  }).catch((error)=>{
+    if(error) throw error
+  })
+ })
 app.get('/dashboard',(req,res)=>{
     if(!req.user){
         res.redirect('/login')
     }else{
-    res.render('UserDashbord',{user:req.user});
+      genesis.find().then((results)=>{
+        let folderIde=results[0].FolderId
+       
+        UserRecording.find({FolderId:folderIde}).then((results2)=>{
+          // console.log(results2)
+        res.render('UserDashbord',{user:req.user,genes:results[0],recordings:results2});
+      })
+      })
+    
     }
 })
-app.get('/podcast',(req,res)=>{
-    res.render('podcast')
+app.get('/talkToUs',(req,res)=>{
+    res.render('talkToUs')
 })
+
 app.get('/BlogPostControl',(req,res)=>{
     res.render('BlogPostControl')
 })
@@ -149,13 +260,22 @@ app.post('/PodcastControl',(req,res)=>{
  
  uploadToTheDriveMakeFOlder(fileMetadata) 
 })
-app.post('/PodcastControlInnitiate',(req,res)=>{
+app.post('/PodcastControlInnitiate',upload.any(),(req,res)=>{
 
-    // let files = req.files;
-    // let filepath="audioUploads/";
-    // let originalname=files[0].originalname+'.aac'
-    // let stringedFilePath=filepath+originalname;
-    // fs.writeFileSync(stringedFilePath,  files[0].buffer);
+    let files = req.files;
+    let filepath="audioUploads/";
+    let originalname=files[0].originalname+'.aac'
+    let stringedFilePath=filepath+originalname;
+    fs.writeFileSync(stringedFilePath,  files[0].buffer);
+
+})
+app.post('/DirectPodcastControlInnitiate',upload.any(),(req,res)=>{
+
+  let files = req.files;
+  let filepath="audioUploads/";
+  let originalname=files[0].originalname
+  let stringedFilePath=filepath+originalname;
+  fs.writeFileSync(stringedFilePath,  files[0].buffer);
 
 })
 app.post('/PodcastControlUpload',upload.any(),(req,res)=>{
@@ -173,7 +293,7 @@ app.post('/PodcastControlUpload',upload.any(),(req,res)=>{
            body: fs.createReadStream(path.join(__dirname, stringedFilePath))
           };   
     uploadToTheDrivePodCastGenesis(fileMetadata,media,stringedFilePath,folderIds,originalname,)
-
+   res.redirect('/Admindashbaord');
 })
 app.post('/innitiateGenesis',(req,res)=>{
     console.log(req.body)
@@ -191,6 +311,16 @@ app.get('/login',(req,res)=>{
 app.post('/news',(req,res)=>{
     
 })
+// app.post('/:UserId',async (req,res)=>{
+
+//   const User = await UserModel.findOne({ short: req.params.UserId})
+//   if (User == null) return res.sendStatus(404)
+
+//   User.Clicks++
+//   User.save()
+
+//   res.redirect(User)
+// })
 app.post('/innitiate',upload.any(),async (req,res)=>{
    
     let files = req.files;
@@ -204,13 +334,13 @@ app.get('/logout', function(req, res){
     res.redirect('/');
   });
 app.post('/ToTheDrive',upload.any(), (req,res)=>{
-    
-    const user=req.user
+    genesis.find().then((results)=>{
+      const user=req.user
     let files=req.files
     let filepath="./audioUploads/";
     let originalname=files[0].originalname+'.aac'
     let stringedFilePath=filepath+originalname;
-   var folderId = "1WFFcWOU-EvMGWhp7_SSlsaXdp-e5dSEs";
+   var folderId = results[0].FolderId;
   var fileMetadata = {
         'name': [originalname],
         parents: [folderId]
@@ -219,10 +349,38 @@ app.post('/ToTheDrive',upload.any(), (req,res)=>{
             mimeType: 'audio/aac',
            body: fs.createReadStream(path.join(__dirname, stringedFilePath))
           };   
- uploadToTheDrivePodCast(fileMetadata,media,stringedFilePath,user)
-})
-app.post('/updatePodcastTitle',(req,res)=>{
+ uploadToTheDrivePodCast(fileMetadata,media,stringedFilePath,user,folderId)
+    }).catch((err)=>{
+      if (err) throw err
+    })
     
+})
+app.post('/ToTheDrive2',upload.any(), (req,res)=>{
+  genesis.find().then((results)=>{
+    const user=req.user
+  let files=req.files
+  let filepath="./audioUploads/";
+  let originalname=files[0].originalname
+  let stringedFilePath=filepath+originalname;
+ var folderId = results[0].FolderId;
+var fileMetadata = {
+      'name': [originalname],
+      parents: [folderId]
+    };
+    var media = {
+          mimeType: 'audio/mp3',
+         body: fs.createReadStream(path.join(__dirname, stringedFilePath))
+        };   
+uploadToTheDrivePodCast(fileMetadata,media,stringedFilePath,user,folderId)
+  }).then(()=>{
+    res.redirect('/dashboard')
+  }).catch((err)=>{
+    if (err) throw err
+  })
+  
+})
+app.get('/Admindashbaord',(req,res)=>{
+    res.render('Admindashbaord')
 })
 app.post('/ToTheDriveImages',upload.any(), (req,res)=>{
    
@@ -242,8 +400,8 @@ app.post('/ToTheDriveImages',upload.any(), (req,res)=>{
   uploadToTheDriveImage(fileMetadata,media,stringedFilePath,user)
 })
 
-app.listen(3000,()=>{
-    console.log('heard from 3000');
+app.listen(4000,()=>{
+    console.log('heard from 4000');
 })
 
 

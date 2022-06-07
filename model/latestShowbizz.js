@@ -2,60 +2,53 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema
 
 const newsSchema = new Schema({
-
-    imageUri1: {
-        type: String,
-            },
-    imageUri2: {
-        type: String,
-        
-    },
-    imageUri3: {
-        type: String,
-        
-    },
-    imageUri4: {
-        type: String,
-        
-    },
-    imageUriX: {
-        type: String,
-        
-    },
-    imageUriY: {
-        type: String,
-        
-    },
-    imageUriZ: {
-        type: String,
-        
-    },
-    imageUriI: {
-        type: String,
-        
-    },
-    heading: {
+    Heading: {
         type: String,
         required: true
-    },
-    paragraphI: {
+      },
+      Image1ID: {
         type: String,
         required: true
-    },
-    paragraphII: {
+      },
+      Image2ID: {
         type: String,
         required: true
-    },
-    Author: {
+      },
+      Image3ID: {
         type: String,
         required: true
-    },
-    Date:{
-        type: Date,
-        required: true,
-        default:Date.now
-
-    }
+      },
+      Image4ID: {
+        type: String,
+        required: true
+      },
+      Paragraph: {
+        type: String,
+        required: true
+      },
+      Paragraph2: {
+        type: String,
+        required: true
+      },
+      SelectedHead: {
+        type: String,
+        required: true
+      },
+      ImageXID: {
+        type: String,
+        required: true
+      },
+        Author: {
+            type: String,
+            required: true
+        },
+        Date:{
+            type: Date,
+            required: true,
+            default:Date.now
+    
+        }
+    
 
 })
 

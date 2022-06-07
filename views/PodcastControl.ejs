@@ -13,12 +13,6 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 </head>
 <body class="w3-light-grey">
 
-<!-- Top container -->
-<div class="w3-bar w3-top w3-black w3-large" style="z-index:4">
-  <button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey" onclick="w3_open();"><i class="fa fa-bars"></i>  Menu</button>
-  <span class="w3-bar-item w3-right">Logo</span>
-</div>
-
 
 <!-- Overlay effect when opening sidebar on small screens -->
 <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
@@ -28,7 +22,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 
   
 
-  <h1>Record Play</h1>
+  <h1>Record Ikiganiro</h1>
   <% if (messages.message) {%>
   <div style="position:absolute; top: 50px; right: 0;color: aliceblue; background-color: rgb(68, 154, 42);height: 10%;width: 25vw;">
   <h4 style="position: inherit;top:-20%;left: 3%;"><b>Message!</b></h4>
@@ -76,19 +70,15 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
       <h4>details</h4>
     <p>
     <input name="PlayName" class="w3-input" type="text" style="width:90%" required>
-    <label>Play Name</label></p>
+    <label>Ikiganiro  title</label></p>
     <p>
       <input class="w3-input" name="Season" type="number" style="width:90%" required>
       <label>Season</label></p>
     <p>
     <textarea name="SeasonDiscription" class="w3-input" type="password" style="width:90%" required></textarea>
-    <label>Season discription</label></p>
-    
-    <p>
+    <label>Ikiganiro discription</label></p>
 
-    <input type="file" name="pic" >
-    <label>Background Pic</label></p>
-    <button class="w3-button w3-section w3-teal w3-ripple">submit</button>
+    <button class="w3-button w3-section w3-teal w3-ripple">click to continue</button>
   </form>
     <% } %> 
     </p>

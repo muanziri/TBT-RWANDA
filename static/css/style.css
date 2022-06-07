@@ -11,6 +11,14 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+#Paragraph {
+  font-size: 30px;
+}
+
+#headingNews {
+  font-size: 40px;
+}
+
 html {
   font-size: 16px;
   -webkit-tap-highlight-color: transparent;
@@ -125,6 +133,12 @@ em>a,
 li>a {
   color: #242424;
 }
+#sideBat {
+  background-color: rgb(240, 160, 102);
+    position: fixed;
+    right: 0;
+    top: 25%
+  }
 
 em>a:hover,
 li>a:hover {
@@ -2560,7 +2574,7 @@ fieldset[disabled] .s-btn {
 
 #Onews {
   width: 50vw;
-   color: rgb(50, 27, 1);
+  color: rgb(50, 30, 1);
 }
 
 .close:hover,
@@ -2644,6 +2658,11 @@ fieldset[disabled] .s-btn {
   #Onews {
     width: 200px;
     background-color: rgba(255, 255, 255, 0);
+    font-size: 15px;
+  }
+
+  #sideBat {
+    position:static
   }
 
   .newsHeadlines {
@@ -2652,13 +2671,25 @@ fieldset[disabled] .s-btn {
     height: 30%;
   }
 
+  #Paragraph {
+    font-size: 15px;
+  }
+
+  #headingNews {
+    font-size: 20px;
+  }
+
+  .modal-content {
+    width: 100%;
+  }
+
   .newsClass {
     width: 100%;
     height: fit-content;
     background-color: rgba(255, 0, 0, 0);
-    
+
     margin-left: 0px;
-    margin-top: 2px;
+    margin-top: 30px;
     display: flex;
     flex-direction: column;
   }

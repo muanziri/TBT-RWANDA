@@ -157,1463 +157,303 @@
   <br>
   <br>
   <br>
-  <div id="adsense">
+  <div style="border-radius: 30px;" id="adsense">
 
   </div>
 
 
   <div id="latestShowbizz" class="ChangeOnMobile">
-    <div class="startiImage"></div>
-    <div class="newsClass">
-      <div class="imageContainerNews">
-        <img style="height: 100%; width:100%;"
-          src="../static/img/newImages/beyonceandjay-z-Mikecoppola-c59229db80174b3290431f66eea3d8ff.jpg" />
-      </div>
-      <div class="newsHeadlines">
-        <h3>heading 12345678 21234</h3>
-        <p>
-          aksnka aknsckajn asjcnakscj asjcnaskjnc asjncakc asjnakn
-          akjscnakcn askjncsakcn akjncaksjcn aknckjns akcnsaknjc
-          aksjcakn kjasnckcsn askjncskjc kjasncksn kjasnkcan
-          <br>
-          <button onclick="document.querySelector('#id01').style.display='block'">click to readmore</button>
-        </p>
+    <% if(latestShowbizzs.length>0) {%>
+      <% latestShowbizzs.forEach((latestShowbizz)=> {%>
+        <div style="border-radius: 30px;" class="newsClass">
+          <div class="imageContainerNews">
+            <img style="height: 100%; width:100%; border-radius: 30px;"
+              src="https://drive.google.com/uc?export=view&id=<%=latestShowbizz.Image4ID.slice(32,65)%>"
+              alt="<%=latestShowbizz.Image1ID.slice(32,65)%>" />
+          </div>
+          <div style=" overflow: hidden;" class="newsHeadlines">
+            <h6>
+              <%=latestShowbizz.Heading%>
+            </h6>
+            <button style="margin-top:0%;padding-top:0%;" onclick="document.getElementById('<%=latestShowbizz.id%>').style.display='block'">click to
+              readmore</button>
+            <p style="height:100%;width:100%;
+          ">
+              <%=latestShowbizz.Paragraph2%>
+            </p>
+                
+            
 
-      </div>
+          </div>
 
-      <div id="id01" class="modal">
+          <div id="<%=latestShowbizz.id%>" class="modal">
 
-        <form class="modal-content animate" action="/action_page.php" method="post">
-          <div class="imgcontainer">
-            <span onclick="document.getElementById('id01').style.display='none'" class="close"
-              title="Close Modal">&times;</span>
-            <img style="width: 50%; position:relative;left:-25%;"
-              src="../static/img/newImages/beyonceandjay-z-Mikecoppola-c59229db80174b3290431f66eea3d8ff.jpg" />
-            <p>ajncajscnasjcnsajjahkscnkjsac ajcaskjc bkasj aksjcnaskcbkasj aksjcaskcjbskaj asjcnaksb
-              ajscbaksjhbsa kasjbcakjb kbackaschjbkajb kjbscakshjcb ackab sakhjcb kasjbcskacb kjcabkjsbcc
-              askcbakjbck kjbckjsbkj akjbaksbbck kajbskabckbc kjbakbscksca kjbacs
-              ajsbakbkasbkabkjbakjkbca kjbcksjabkjcsk kjabkjbsckjba
+            <div class="modal-content animate" action="/action_page.php" method="post">
+              <div class="imgcontainer">
+                <span onclick="document.getElementById('<%=latestShowbizz.id%>').style.display='none'" class="close"
+                  title="Close Modal">&times;</span>
+                <br>
+                <br>
+                <h4 id="headingNews"><b>
+                    <%=latestShowbizz.Heading%>
+                  </b></h4>
+                <img style="height: auto; width: 60%; "
+                  src="https://drive.google.com/uc?export=view&id=<%=latestShowbizz.Image4ID.slice(32,65)%>"
+                  alt="<%=latestShowbizz.Image1ID.slice(32,65)%>" />
+                <h6 id="Paragraph">
+                  <%=latestShowbizz.Paragraph%>
+                </h6>
+                <br>
+                <div>advert</div>
+                <br>
+                <img style="height: auto; width: 60%; "
+                  src="https://drive.google.com/uc?export=view&id=<%=latestShowbizz.Image3ID.slice(32,65)%>"
+                  alt="<%=latestShowbizz.Image3ID.slice(32,65)%>" />
+                <br>
+                <h6 id="Paragraph">
+                  <%=latestShowbizz.Paragraph2%>
+                </h6>
+                <p><h6>Author</h6>:<%=latestShowbizz.Author%></p>
+              </div>
+
+
+            </div>
+          </div>
+        </div>
+
+
+        <div id="id01" class="modal">
+
+          <div class="modal-content animate" action="/action_page.php" method="post">
+            <div class="imgcontainer">
+              <span onclick="document.getElementById('id01').style.display='none'" class="close"
+                title="Close Modal">&times;</span>
+
+            </div>
+
+
+          </div>
+        </div>
+        <% })} %>
+  </div>
+  </div>
+  <div style="display: none;" id="GosssipNews" class="ChangeOnMobile">
+   
+    <% if(GosssipNews) {%>
+      <% GosssipNews.forEach((GosssipNew)=> {%>
+        <div  class="newsClass">
+          <div  class="imageContainerNews">
+            <img style="height: 100%; width:100%; border-radius: 30px;"
+              src="https://drive.google.com/uc?export=view&id=<%=GosssipNew.Image4ID.slice(32,65)%>"
+              alt="<%=GosssipNew.Image1ID.slice(32,65)%>" />
+          </div>
+          <div style=" overflow: hidden;" class="newsHeadlines">
+            <h6>
+              <%=GosssipNew.Heading%>
+            </h6>
+            <button onclick="document.getElementById('<%=GosssipNew.id%>').style.display='block'">click to
+              readmore</button>
+            <p>
+              <%=GosssipNew.Paragraph2%>
+                <br>
             </p>
           </div>
 
+          <div id="<%=GosssipNew.id%>" class="modal">
 
-        </form>
-      </div>
-    </div>
-    <div class="newsClass">
-      <div class="imageContainerNews">
-        <img style="height: 100%; width:100%;" src="../static/img/newImages/kim.jpeg" />
-      </div>
-      <div class="newsHeadlines">
-        <h3>heading 12345678 21234</h3>
-        <p>
-          aksnka aknsckajn asjcnakscj asjcnaskjnc asjncakc asjnakn
-          akjscnakcn askjncsakcn akjncaksjcn aknckjns akcnsaknjc
-          aksjcakn kjasnckcsn askjncskjc kjasncksn kjasnkcan
-          <br>
-          <button>click to readmore</button>
-        </p>
+            <div class="modal-content animate" action="/action_page.php" method="post">
+              <div class="imgcontainer">
+                <span onclick="document.getElementById('<%=GosssipNew.id%>').style.display='none'" class="close"
+                  title="Close Modal">&times;</span>
+                <br>
+                <br>
+                <h4 id="headingNews"><b>
+                    <%=GosssipNew.Heading%>
+                  </b></h4>
+                <img style="height: auto; width: 60%; "
+                  src="https://drive.google.com/uc?export=view&id=<%=GosssipNew.Image4ID.slice(32,65)%>"
+                  alt="<%=GosssipNew.Image1ID.slice(32,65)%>" />
+                <h6 id="Paragraph">
+                  <%=GosssipNew.Paragraph%>
+                </h6>
+                <br>
+                <div>advert</div>
+                <br>
+                <img style="height: auto; width: 60%; "
+                  src="https://drive.google.com/uc?export=view&id=<%=GosssipNew.Image3ID.slice(32,65)%>"
+                  alt="<%=GosssipNew.Image3ID.slice(32,65)%>" />
+                <br>
+                <h6 id="Paragraph">
+                  <%=GosssipNew.Paragraph2%>
+                </h6>
+                <p><h6>Author</h6>:<%=GosssipNew.Author%></p>
 
-      </div>
+              </div>
 
-      <div id="id01" class="modal">
 
-        <form class="modal-content animate" action="/action_page.php" method="post">
-          <div class="imgcontainer">
-            <span onclick="document.getElementById('id01').style.display='none'" class="close"
-              title="Close Modal">&times;</span>
-
+            </div>
           </div>
+        </div>
 
 
-        </form>
-      </div>
-    </div>
-    <div class="newsClass">
-      <div class="imageContainerNews">
-        <img style="height: 100%; width:100%;" src="../static/img/newImages/kim.jpeg" />
-      </div>
-      <div class="newsHeadlines">
-        <h3>heading 12345678 21234</h3>
-        <p>
-          aksnka aknsckajn asjcnakscj asjcnaskjnc asjncakc asjnakn
-          akjscnakcn askjncsakcn akjncaksjcn aknckjns akcnsaknjc
-          aksjcakn kjasnckcsn askjncskjc kjasncksn kjasnkcan
-          <br>
-          <button>click to readmore</button>
-        </p>
+        
+        <% })} %>
 
-      </div>
-
-      <div id="id01" class="modal">
-
-        <form class="modal-content animate" action="/action_page.php" method="post">
-          <div class="imgcontainer">
-            <span onclick="document.getElementById('id01').style.display='none'" class="close"
-              title="Close Modal">&times;</span>
-
-          </div>
-
-
-        </form>
-      </div>
-    </div>
-    <div class="newsClass">
-      <div class="imageContainerNews">
-        <img style="height: 100%; width:100%;" src="../static/img/newImages/kim.jpeg" />
-      </div>
-      <div class="newsHeadlines">
-        <h3>heading 12345678 21234</h3>
-        <p>
-          aksnka aknsckajn asjcnakscj asjcnaskjnc asjncakc asjnakn
-          akjscnakcn askjncsakcn akjncaksjcn aknckjns akcnsaknjc
-          aksjcakn kjasnckcsn askjncskjc kjasncksn kjasnkcan
-          <br>
-          <button>click to readmore</button>
-        </p>
-
-      </div>
-
-      <div id="id01" class="modal">
-
-        <form class="modal-content animate" action="/action_page.php" method="post">
-          <div class="imgcontainer">
-            <span onclick="document.getElementById('id01').style.display='none'" class="close"
-              title="Close Modal">&times;</span>
-
-          </div>
-
-
-        </form>
-      </div>
-    </div>
-    <div class="newsClass">
-      <div class="imageContainerNews">
-        <img style="height: 100%; width:100%;" src="../static/img/newImages/kim.jpeg" />
-      </div>
-      <div class="newsHeadlines">
-        <h3>heading 12345678 21234</h3>
-        <p>
-          aksnka aknsckajn asjcnakscj asjcnaskjnc asjncakc asjnakn
-          akjscnakcn askjncsakcn akjncaksjcn aknckjns akcnsaknjc
-          aksjcakn kjasnckcsn askjncskjc kjasncksn kjasnkcan
-          <br>
-          <button>click to readmore</button>
-        </p>
-
-      </div>
-
-      <div id="id01" class="modal">
-
-        <form class="modal-content animate" action="/action_page.php" method="post">
-          <div class="imgcontainer">
-            <span onclick="document.getElementById('id01').style.display='none'" class="close"
-              title="Close Modal">&times;</span>
-
-          </div>
-
-
-        </form>
-      </div>
-    </div>
-    <div class="newsClass">
-      <div class="imageContainerNews">
-        <img style="height: 100%; width:100%;" src="../static/img/newImages/kim.jpeg" />
-      </div>
-      <div class="newsHeadlines">
-        <h3>heading 12345678 21234</h3>
-        <p>
-          aksnka aknsckajn asjcnakscj asjcnaskjnc asjncakc asjnakn
-          akjscnakcn askjncsakcn akjncaksjcn aknckjns akcnsaknjc
-          aksjcakn kjasnckcsn askjncskjc kjasncksn kjasnkcan
-          <br>
-          <button>click to readmore</button>
-        </p>
-
-      </div>
-
-      <div id="id01" class="modal">
-
-        <form class="modal-content animate" action="/action_page.php" method="post">
-          <div class="imgcontainer">
-            <span onclick="document.getElementById('id01').style.display='none'" class="close"
-              title="Close Modal">&times;</span>
-
-          </div>
-
-
-        </form>
-      </div>
-    </div>
-    <div class="middelImage"></div>
-    <div class="newsClass">
-      <div class="imageContainerNews">
-        <img style="height: 100%; width:100%;" src="../static/img/newImages/kim.jpeg" />
-      </div>
-      <div class="newsHeadlines">
-        <h3>heading 12345678 21234</h3>
-        <p>
-          aksnka aknsckajn asjcnakscj asjcnaskjnc asjncakc asjnakn
-          akjscnakcn askjncsakcn akjncaksjcn aknckjns akcnsaknjc
-          aksjcakn kjasnckcsn askjncskjc kjasncksn kjasnkcan
-          <br>
-          <button>click to readmore</button>
-        </p>
-
-      </div>
-
-      <div id="id01" class="modal">
-
-        <form class="modal-content animate" action="/action_page.php" method="post">
-          <div class="imgcontainer">
-            <span onclick="document.getElementById('id01').style.display='none'" class="close"
-              title="Close Modal">&times;</span>
-
-          </div>
-
-
-        </form>
-      </div>
-    </div>
-    <div class="newsClass">
-      <div class="imageContainerNews">
-        <img style="height: 100%; width:100%;" src="../static/img/newImages/kim.jpeg" />
-      </div>
-      <div class="newsHeadlines">
-        <h3>heading 12345678 21234</h3>
-        <p>
-          aksnka aknsckajn asjcnakscj asjcnaskjnc asjncakc asjnakn
-          akjscnakcn askjncsakcn akjncaksjcn aknckjns akcnsaknjc
-          aksjcakn kjasnckcsn askjncskjc kjasncksn kjasnkcan
-          <br>
-          <button>click to readmore</button>
-        </p>
-
-      </div>
-
-      <div id="id01" class="modal">
-
-        <form class="modal-content animate" action="/action_page.php" method="post">
-          <div class="imgcontainer">
-            <span onclick="document.getElementById('id01').style.display='none'" class="close"
-              title="Close Modal">&times;</span>
-
-          </div>
-
-
-        </form>
-      </div>
-    </div>
-    <div class="newsClass">
-      <div class="imageContainerNews">
-        <img style="height: 100%; width:100%;" src="../static/img/newImages/kim.jpeg" />
-      </div>
-      <div class="newsHeadlines">
-        <h3>heading 12345678 21234</h3>
-        <p>
-          aksnka aknsckajn asjcnakscj asjcnaskjnc asjncakc asjnakn
-          akjscnakcn askjncsakcn akjncaksjcn aknckjns akcnsaknjc
-          aksjcakn kjasnckcsn askjncskjc kjasncksn kjasnkcan
-          <br>
-          <button>click to readmore</button>
-        </p>
-
-      </div>
-
-      <div id="id01" class="modal">
-
-        <form class="modal-content animate" action="/action_page.php" method="post">
-          <div class="imgcontainer">
-            <span onclick="document.getElementById('id01').style.display='none'" class="close"
-              title="Close Modal">&times;</span>
-
-          </div>
-
-
-        </form>
-      </div>
-    </div>
-    <div class="newsClass">
-      <div class="imageContainerNews">
-        <img style="height: 100%; width:100%;" src="../static/img/newImages/kim.jpeg" />
-      </div>
-      <div class="newsHeadlines">
-        <h3>heading 12345678 21234</h3>
-        <p>
-          aksnka aknsckajn asjcnakscj asjcnaskjnc asjncakc asjnakn
-          akjscnakcn askjncsakcn akjncaksjcn aknckjns akcnsaknjc
-          aksjcakn kjasnckcsn askjncskjc kjasncksn kjasnkcan
-          <br>
-          <button>click to readmore</button>
-        </p>
-
-      </div>
-
-      <div id="id01" class="modal">
-
-        <form class="modal-content animate" action="/action_page.php" method="post">
-          <div class="imgcontainer">
-            <span onclick="document.getElementById('id01').style.display='none'" class="close"
-              title="Close Modal">&times;</span>
-
-          </div>
-
-
-        </form>
-      </div>
-    </div>
-    <div class="newsClass">
-      <div class="imageContainerNews">
-        <img style="height: 100%; width:100%;" src="../static/img/newImages/kim.jpeg" />
-      </div>
-      <div class="newsHeadlines">
-        <h3>heading 12345678 21234</h3>
-        <p>
-          aksnka aknsckajn asjcnakscj asjcnaskjnc asjncakc asjnakn
-          akjscnakcn askjncsakcn akjncaksjcn aknckjns akcnsaknjc
-          aksjcakn kjasnckcsn askjncskjc kjasncksn kjasnkcan
-          <br>
-          <button>click to readmore</button>
-        </p>
-
-      </div>
-
-      <div id="id01" class="modal">
-
-        <form class="modal-content animate" action="/action_page.php" method="post">
-          <div class="imgcontainer">
-            <span onclick="document.getElementById('id01').style.display='none'" class="close"
-              title="Close Modal">&times;</span>
-
-          </div>
-
-
-        </form>
-      </div>
-    </div>
-  </div>
-  <div style="display: none;" id="GosssipNews" class="ChangeOnMobile">
-    <div class="startiImage"></div>
-    <div class="newsClass">
-      <div class="imageContainerNews">
-        <img style="height: 100%; width:100%;" src="../static/img/newImages/newCeleb.jpg" />
-      </div>
-      <div class="newsHeadlines">
-        <h3>heading 12345678 21234</h3>
-        <p>
-          aksnka aknsckajn asjcnakscj asjcnaskjnc asjncakc asjnakn
-          akjscnakcn askjncsakcn akjncaksjcn aknckjns akcnsaknjc
-          aksjcakn kjasnckcsn askjncskjc kjasncksn kjasnkcan
-          <br>
-          <button>click to readmore</button>
-        </p>
-
-      </div>
-
-      <div id="id01" class="modal">
-
-        <form class="modal-content animate" action="/action_page.php" method="post">
-          <div class="imgcontainer">
-            <span onclick="document.getElementById('id01').style.display='none'" class="close"
-              title="Close Modal">&times;</span>
-
-          </div>
-
-
-        </form>
-      </div>
-    </div>
-    <div class="newsClass">
-      <div class="imageContainerNews">
-        <img style="height: 100%; width:100%;" src="../static/img/newImages/kim.jpeg" />
-      </div>
-      <div class="newsHeadlines">
-        <h3>heading 12345678 21234</h3>
-        <p>
-          aksnka aknsckajn asjcnakscj asjcnaskjnc asjncakc asjnakn
-          akjscnakcn askjncsakcn akjncaksjcn aknckjns akcnsaknjc
-          aksjcakn kjasnckcsn askjncskjc kjasncksn kjasnkcan
-          <br>
-          <button>click to readmore</button>
-        </p>
-
-      </div>
-
-      <div id="id01" class="modal">
-
-        <form class="modal-content animate" action="/action_page.php" method="post">
-          <div class="imgcontainer">
-            <span onclick="document.getElementById('id01').style.display='none'" class="close"
-              title="Close Modal">&times;</span>
-
-          </div>
-
-
-        </form>
-      </div>
-    </div>
-    <div class="middelImage"></div>
-    <div class="newsClass">
-      <div class="imageContainerNews">
-        <img style="height: 100%; width:100%;" src="../static/img/newImages/kim.jpeg" />
-      </div>
-      <div class="newsHeadlines">
-        <h3>heading 12345678 21234</h3>
-        <p>
-          aksnka aknsckajn asjcnakscj asjcnaskjnc asjncakc asjnakn
-          akjscnakcn askjncsakcn akjncaksjcn aknckjns akcnsaknjc
-          aksjcakn kjasnckcsn askjncskjc kjasncksn kjasnkcan
-          <br>
-          <button>click to readmore</button>
-        </p>
-
-      </div>
-
-      <div id="id01" class="modal">
-
-        <form class="modal-content animate" action="/action_page.php" method="post">
-          <div class="imgcontainer">
-            <span onclick="document.getElementById('id01').style.display='none'" class="close"
-              title="Close Modal">&times;</span>
-
-          </div>
-
-
-        </form>
-      </div>
-    </div>
-
-    <div class="newsClass">
-      <div class="imageContainerNews">
-        <img style="height: 100%; width:100%;" src="../static/img/newImages/kim.jpeg" />
-      </div>
-      <div class="newsHeadlines">
-        <h3>heading 12345678 21234</h3>
-        <p>
-          aksnka aknsckajn asjcnakscj asjcnaskjnc asjncakc asjnakn
-          akjscnakcn askjncsakcn akjncaksjcn aknckjns akcnsaknjc
-          aksjcakn kjasnckcsn askjncskjc kjasncksn kjasnkcan
-          <br>
-          <button>click to readmore</button>
-        </p>
-
-      </div>
-
-      <div id="id01" class="modal">
-
-        <form class="modal-content animate" action="/action_page.php" method="post">
-          <div class="imgcontainer">
-            <span onclick="document.getElementById('id01').style.display='none'" class="close"
-              title="Close Modal">&times;</span>
-
-          </div>
-
-
-        </form>
-      </div>
-    </div>
-    <div class="newsClass">
-      <div class="imageContainerNews">
-        <img style="height: 100%; width:100%;" src="../static/img/newImages/kim.jpeg" />
-      </div>
-      <div class="newsHeadlines">
-        <h3>heading 12345678 21234</h3>
-        <p>
-          aksnka aknsckajn asjcnakscj asjcnaskjnc asjncakc asjnakn
-          akjscnakcn askjncsakcn akjncaksjcn aknckjns akcnsaknjc
-          aksjcakn kjasnckcsn askjncskjc kjasncksn kjasnkcan
-          <br>
-          <button>click to readmore</button>
-        </p>
-
-      </div>
-
-      <div id="id01" class="modal">
-
-        <form class="modal-content animate" action="/action_page.php" method="post">
-          <div class="imgcontainer">
-            <span onclick="document.getElementById('id01').style.display='none'" class="close"
-              title="Close Modal">&times;</span>
-
-          </div>
-
-
-        </form>
-      </div>
-    </div>
-    <div class="newsClass">
-      <div class="imageContainerNews">
-        <img style="height: 100%; width:100%;" src="../static/img/newImages/kim.jpeg" />
-      </div>
-      <div class="newsHeadlines">
-        <h3>heading 12345678 21234</h3>
-        <p>
-          aksnka aknsckajn asjcnakscj asjcnaskjnc asjncakc asjnakn
-          akjscnakcn askjncsakcn akjncaksjcn aknckjns akcnsaknjc
-          aksjcakn kjasnckcsn askjncskjc kjasncksn kjasnkcan
-          <br>
-          <button>click to readmore</button>
-        </p>
-
-      </div>
-
-      <div id="id01" class="modal">
-
-        <form class="modal-content animate" action="/action_page.php" method="post">
-          <div class="imgcontainer">
-            <span onclick="document.getElementById('id01').style.display='none'" class="close"
-              title="Close Modal">&times;</span>
-
-          </div>
-
-
-        </form>
-      </div>
-    </div>
-    <div class="newsClass">
-      <div class="imageContainerNews">
-        <img style="height: 100%; width:100%;" src="../static/img/newImages/kim.jpeg" />
-      </div>
-      <div class="newsHeadlines">
-        <h3>heading 12345678 21234</h3>
-        <p>
-          aksnka aknsckajn asjcnakscj asjcnaskjnc asjncakc asjnakn
-          akjscnakcn askjncsakcn akjncaksjcn aknckjns akcnsaknjc
-          aksjcakn kjasnckcsn askjncskjc kjasncksn kjasnkcan
-          <br>
-          <button>click to readmore</button>
-        </p>
-
-      </div>
-
-      <div id="id01" class="modal">
-
-        <form class="modal-content animate" action="/action_page.php" method="post">
-          <div class="imgcontainer">
-            <span onclick="document.getElementById('id01').style.display='none'" class="close"
-              title="Close Modal">&times;</span>
-
-          </div>
-
-
-        </form>
-      </div>
-    </div>
-    <div class="newsClass">
-      <div class="imageContainerNews">
-        <img style="height: 100%; width:100%;" src="../static/img/newImages/kim.jpeg" />
-      </div>
-      <div class="newsHeadlines">
-        <h3>heading 12345678 21234</h3>
-        <p>
-          aksnka aknsckajn asjcnakscj asjcnaskjnc asjncakc asjnakn
-          akjscnakcn askjncsakcn akjncaksjcn aknckjns akcnsaknjc
-          aksjcakn kjasnckcsn askjncskjc kjasncksn kjasnkcan
-          <br>
-          <button>click to readmore</button>
-        </p>
-
-      </div>
-
-      <div id="id01" class="modal">
-
-        <form class="modal-content animate" action="/action_page.php" method="post">
-          <div class="imgcontainer">
-            <span onclick="document.getElementById('id01').style.display='none'" class="close"
-              title="Close Modal">&times;</span>
-
-          </div>
-
-
-        </form>
-      </div>
-    </div>
-    <div class="newsClass">
-      <div class="imageContainerNews">
-        <img style="height: 100%; width:100%;" src="../static/img/newImages/kim.jpeg" />
-      </div>
-      <div class="newsHeadlines">
-        <h3>heading 12345678 21234</h3>
-        <p>
-          aksnka aknsckajn asjcnakscj asjcnaskjnc asjncakc asjnakn
-          akjscnakcn askjncsakcn akjncaksjcn aknckjns akcnsaknjc
-          aksjcakn kjasnckcsn askjncskjc kjasncksn kjasnkcan
-          <br>
-          <button>click to readmore</button>
-        </p>
-
-      </div>
-
-      <div id="id01" class="modal">
-
-        <form class="modal-content animate" action="/action_page.php" method="post">
-          <div class="imgcontainer">
-            <span onclick="document.getElementById('id01').style.display='none'" class="close"
-              title="Close Modal">&times;</span>
-
-          </div>
-
-
-        </form>
-      </div>
-    </div>
-    <div class="newsClass">
-      <div class="imageContainerNews">
-        <img style="height: 100%; width:100%;" src="../static/img/newImages/kim.jpeg" />
-      </div>
-      <div class="newsHeadlines">
-        <h3>heading 12345678 21234</h3>
-        <p>
-          aksnka aknsckajn asjcnakscj asjcnaskjnc asjncakc asjnakn
-          akjscnakcn askjncsakcn akjncaksjcn aknckjns akcnsaknjc
-          aksjcakn kjasnckcsn askjncskjc kjasncksn kjasnkcan
-          <br>
-          <button>click to readmore</button>
-        </p>
-
-      </div>
-
-      <div id="id01" class="modal">
-
-        <form class="modal-content animate" action="/action_page.php" method="post">
-          <div class="imgcontainer">
-            <span onclick="document.getElementById('id01').style.display='none'" class="close"
-              title="Close Modal">&times;</span>
-
-          </div>
-
-
-        </form>
-      </div>
-    </div>
-    <div class="newsClass">
-      <div class="imageContainerNews">
-        <img style="height: 100%; width:100%;" src="../static/img/newImages/kim.jpeg" />
-      </div>
-      <div class="newsHeadlines">
-        <h3>heading 12345678 21234</h3>
-        <p>
-          aksnka aknsckajn asjcnakscj asjcnaskjnc asjncakc asjnakn
-          akjscnakcn askjncsakcn akjncaksjcn aknckjns akcnsaknjc
-          aksjcakn kjasnckcsn askjncskjc kjasncksn kjasnkcan
-          <br>
-          <button>click to readmore</button>
-        </p>
-
-      </div>
-
-      <div id="id01" class="modal">
-
-        <form class="modal-content animate" action="/action_page.php" method="post">
-          <div class="imgcontainer">
-            <span onclick="document.getElementById('id01').style.display='none'" class="close"
-              title="Close Modal">&times;</span>
-
-          </div>
-
-
-        </form>
-      </div>
-    </div>
-    <div class="newsClass">
-      <div class="imageContainerNews">
-        <img style="height: 100%; width:100%;" src="../static/img/newImages/kim.jpeg" />
-      </div>
-      <div class="newsHeadlines">
-        <h3>heading 12345678 21234</h3>
-        <p>
-          aksnka aknsckajn asjcnakscj asjcnaskjnc asjncakc asjnakn
-          akjscnakcn askjncsakcn akjncaksjcn aknckjns akcnsaknjc
-          aksjcakn kjasnckcsn askjncskjc kjasncksn kjasnkcan
-          <br>
-          <button>click to readmore</button>
-        </p>
-
-      </div>
-
-      <div id="id01" class="modal">
-
-        <form class="modal-content animate" action="/action_page.php" method="post">
-          <div class="imgcontainer">
-            <span onclick="document.getElementById('id01').style.display='none'" class="close"
-              title="Close Modal">&times;</span>
-
-          </div>
-
-
-        </form>
-      </div>
-    </div>
-    <div class="newsClass">
-      <div class="imageContainerNews">
-        <img style="height: 100%; width:100%;" src="../static/img/newImages/kim.jpeg" />
-      </div>
-      <div class="newsHeadlines">
-        <h3>heading 12345678 21234</h3>
-        <p>
-          aksnka aknsckajn asjcnakscj asjcnaskjnc asjncakc asjnakn
-          akjscnakcn askjncsakcn akjncaksjcn aknckjns akcnsaknjc
-          aksjcakn kjasnckcsn askjncskjc kjasncksn kjasnkcan
-          <br>
-          <button>click to readmore</button>
-        </p>
-
-      </div>
-
-      <div id="id01" class="modal">
-
-        <form class="modal-content animate" action="/action_page.php" method="post">
-          <div class="imgcontainer">
-            <span onclick="document.getElementById('id01').style.display='none'" class="close"
-              title="Close Modal">&times;</span>
-
-          </div>
-
-
-        </form>
-      </div>
-    </div>
-    <div class="newsClass">
-      <div class="imageContainerNews">
-        <img style="height: 100%; width:100%;" src="../static/img/newImages/kim.jpeg" />
-      </div>
-      <div class="newsHeadlines">
-        <h3>heading 12345678 21234</h3>
-        <p>
-          aksnka aknsckajn asjcnakscj asjcnaskjnc asjncakc asjnakn
-          akjscnakcn askjncsakcn akjncaksjcn aknckjns akcnsaknjc
-          aksjcakn kjasnckcsn askjncskjc kjasncksn kjasnkcan
-          <br>
-          <button>click to readmore</button>
-        </p>
-
-      </div>
-
-      <div id="id01" class="modal">
-
-        <form class="modal-content animate" action="/action_page.php" method="post">
-          <div class="imgcontainer">
-            <span onclick="document.getElementById('id01').style.display='none'" class="close"
-              title="Close Modal">&times;</span>
-
-          </div>
-
-
-        </form>
-      </div>
-    </div>
-    <div class="newsClass">
-      <div class="imageContainerNews">
-        <img style="height: 100%; width:100%;" src="../static/img/newImages/kim.jpeg" />
-      </div>
-      <div class="newsHeadlines">
-        <h3>heading 12345678 21234</h3>
-        <p>
-          aksnka aknsckajn asjcnakscj asjcnaskjnc asjncakc asjnakn
-          akjscnakcn askjncsakcn akjncaksjcn aknckjns akcnsaknjc
-          aksjcakn kjasnckcsn askjncskjc kjasncksn kjasnkcan
-          <br>
-          <button>click to readmore</button>
-        </p>
-
-      </div>
-
-      <div id="id01" class="modal">
-
-        <form class="modal-content animate" action="/action_page.php" method="post">
-          <div class="imgcontainer">
-            <span onclick="document.getElementById('id01').style.display='none'" class="close"
-              title="Close Modal">&times;</span>
-
-          </div>
-
-
-        </form>
-      </div>
-    </div>
   </div>
   <div style="display: none;height: fit-content;" id="showbizzTrendingNews" class="ChangeOnMobile">
     <div class="container">
 
-
+     
       <main>
-        <div class="article">
+        <% if(trendingPics) {%>
+          <% trendingPics.forEach((trendingPics) => {%> 
+        <div style="background-image: url('https://drive.google.com/uc?export=view&id=<%=trendingPics.Image1ID.slice(32,65)%>')" class="article">
           <div class="icons">
             <i class="fa fa-info-circle"></i>
             <i class="fa fa-star-o"></i>
             <i class="fa fa-heart"></i>
           </div>
           <div class="text">
-            <h2>You can do anything you set your mind to!</h2>
-            <p>Dont break the chain!</p>
+            <h2 style="background-color: rgb(0, 0, 0,0.5);"><%=trendingPics.Heading1%></h2>
+           
           </div>
         </div>
-        <div class="article vertical">
+        <div style="background-image: url('https://drive.google.com/uc?export=view&id=<%=trendingPics.Image2ID.slice(32,65)%>');" class="article vertical">
           <div class="icons">
             <i class="fa fa-info-circle"></i>
             <i class="fa fa-star-o"></i>
             <i class="fa fa-heart"></i>
           </div>
           <div class="text">
-            <h2>You can do anything you set your mind to!</h2>
-            <p>Dont break the chain!</p>
+            <h2 style="background-color: rgb(0, 0, 0,0.5);"><%=trendingPics.Heading2%> </h2>
+           
           </div>
 
         </div>
-        <div class="article r-vertical">
+        <div style="background-image: url('https://drive.google.com/uc?export=view&id=<%=trendingPics.Image3ID.slice(32,65)%>');" class="article r-vertical">
           <div class="icons">
             <i class="fa fa-info-circle"></i>
             <i class="fa fa-star-o"></i>
             <i class="fa fa-heart"></i>
           </div>
           <div class="text">
-            <h2>You can do anything you set your mind to!</h2>
-            <p>Dont break the chain!</p>
+            <h2 style="background-color: rgb(0, 0, 0,0.5);"><%=trendingPics.Heading3%> </h2>
+           
           </div>
         </div>
-        <div class="article r-vertical">
+        <div style="background-image: url('https://drive.google.com/uc?export=view&id=<%=trendingPics.Image4ID.slice(32,65)%>');" class="article r-vertical">
           <div class="icons">
             <i class="fa fa-info-circle"></i>
             <i class="fa fa-star-o"></i>
             <i class="fa fa-heart"></i>
           </div>
           <div class="text">
-            <h2>You can do anything you set your mind to!</h2>
-            <p>Dont break the chain!</p>
+            <h2 style="background-color: rgb(0, 0, 0,0.5);"><%=trendingPics.Heading4%> </h2>
+           
           </div>
         </div>
-        <div class="article r-vertical">
+        <div style="background-image: url('https://drive.google.com/uc?export=view&id=<%=trendingPics.Image5ID.slice(32,65)%>');" class="article r-vertical">
           <div class="icons">
             <i class="fa fa-info-circle"></i>
             <i class="fa fa-star-o"></i>
             <i class="fa fa-heart"></i>
           </div>
           <div class="text">
-            <h2>You can do anything you set your mind to!</h2>
-            <p>Dont break the chain!</p>
+            <h2 style="background-color: rgb(0, 0, 0,0.5);"><%=trendingPics.Heading5%> </h2>
+           
           </div>
         </div>
-        <div class="article bo-horizontal">
+        <div style="background-image: url('https://drive.google.com/uc?export=view&id=<%=trendingPics.Image6ID.slice(32,65)%>');" class="article bo-horizontal">
           <div class="icons">
             <i class="fa fa-info-circle"></i>
             <i class="fa fa-star-o"></i>
             <i class="fa fa-heart"></i>
           </div>
           <div class="text">
-            <h2>You can do anything you set your mind to!</h2>
-            <p>Dont break the chain!</p>
+            <h2 style="background-color: rgb(0, 0, 0,0.5);"><%=trendingPics.Heading6%> </h2>
+           
           </div>
         </div>
-        <div class="article horizontal">
+        <div style="background-image: url('https://drive.google.com/uc?export=view&id=<%=trendingPics.Image7ID.slice(32,65)%>');" class="article horizontal">
           <div class="icons">
             <i class="fa fa-info-circle"></i>
             <i class="fa fa-star-o"></i>
             <i class="fa fa-heart"></i>
           </div>
           <div class="text">
-            <h2>You can do anything you set your mind to!</h2>
-            <p>Dont break the chain!</p>
-          </div>
-        </div>
-
-        <div class="article">
-          <div class="icons">
-            <i class="fa fa-info-circle"></i>
-            <i class="fa fa-star-o"></i>
-            <i class="fa fa-heart"></i>
-          </div>
-          <div class="text">
-            <h2>You can do anything you set your mind to!</h2>
-            <p>Dont break the chain!</p>
-          </div>
-        </div>
-        <div class="article vertical">
-          <div class="icons">
-            <i class="fa fa-info-circle"></i>
-            <i class="fa fa-star-o"></i>
-            <i class="fa fa-heart"></i>
-          </div>
-          <div class="text">
-            <h2>You can do anything you set your mind to!</h2>
-            <p>Dont break the chain!</p>
-          </div>
-
-        </div>
-        <div class="article r-vertical">
-          <div class="icons">
-            <i class="fa fa-info-circle"></i>
-            <i class="fa fa-star-o"></i>
-            <i class="fa fa-heart"></i>
-          </div>
-          <div class="text">
-            <h2>You can do anything you set your mind to!</h2>
-            <p>Dont break the chain!</p>
-          </div>
-        </div>
-        <div class="article r-vertical">
-          <div class="icons">
-            <i class="fa fa-info-circle"></i>
-            <i class="fa fa-star-o"></i>
-            <i class="fa fa-heart"></i>
-          </div>
-          <div class="text">
-            <h2>You can do anything you set your mind to!</h2>
-            <p>Dont break the chain!</p>
-          </div>
-        </div>
-        <div class="article r-vertical">
-          <div class="icons">
-            <i class="fa fa-info-circle"></i>
-            <i class="fa fa-star-o"></i>
-            <i class="fa fa-heart"></i>
-          </div>
-          <div class="text">
-            <h2>You can do anything you set your mind to!</h2>
-            <p>Dont break the chain!</p>
-          </div>
-        </div>
-        <div class="article r-vertical">
-          <div class="icons">
-            <i class="fa fa-info-circle"></i>
-            <i class="fa fa-star-o"></i>
-            <i class="fa fa-heart"></i>
-          </div>
-          <div class="text">
-            <h2>You can do anything you set your mind to!</h2>
-            <p>Dont break the chain!</p>
-          </div>
-        </div>
-        <div class="article bo-horizontal">
-          <div class="icons">
-            <i class="fa fa-info-circle"></i>
-            <i class="fa fa-star-o"></i>
-            <i class="fa fa-heart"></i>
-          </div>
-          <div class="text">
-            <h2>You can do anything you set your mind to!</h2>
-            <p>You should go through the minimalist way It will become a habit, After that you'll be able to towards
-              your goals. <a href="#">Click Here</a></p>
-          </div>
-        </div>
-        <div class="article bo-horizontal">
-          <div class="icons">
-            <i class="fa fa-info-circle"></i>
-            <i class="fa fa-star-o"></i>
-            <i class="fa fa-heart"></i>
-          </div>
-          <div class="text">
-            <h2>You can do anything you set your mind to!</h2>
-            <p>Dont break the chain!</p>
-          </div>
-        </div>
-        <div class="article">
-          <div class="icons">
-            <i class="fa fa-info-circle"></i>
-            <i class="fa fa-star-o"></i>
-            <i class="fa fa-heart"></i>
-          </div>
-          <div class="text">
-            <h2>You can do anything you set your mind to!</h2>
-            <p>Dont break the chain!</p>
-          </div>
-        </div>
-        <div class="article vertical">
-          <div class="icons">
-            <i class="fa fa-info-circle"></i>
-            <i class="fa fa-star-o"></i>
-            <i class="fa fa-heart"></i>
-          </div>
-          <div class="text">
-            <h2>You can do anything you set your mind to!</h2>
-            <p>Dont break the chain!</p>
-          </div>
-
-        </div>
-        <div class="article r-vertical">
-          <div class="icons">
-            <i class="fa fa-info-circle"></i>
-            <i class="fa fa-star-o"></i>
-            <i class="fa fa-heart"></i>
-          </div>
-          <div class="text">
-            <h2>You can do anything you set your mind to!</h2>
-            <p>Dont break the chain!</p>
-          </div>
-        </div>
-        <div class="article r-vertical">
-          <div class="icons">
-            <i class="fa fa-info-circle"></i>
-            <i class="fa fa-star-o"></i>
-            <i class="fa fa-heart"></i>
-          </div>
-          <div class="text">
-            <h2>You can do anything you set your mind to!</h2>
-            <p>Dont break the chain!</p>
-          </div>
-        </div>
-        <div class="article r-vertical">
-          <div class="icons">
-            <i class="fa fa-info-circle"></i>
-            <i class="fa fa-star-o"></i>
-            <i class="fa fa-heart"></i>
-          </div>
-          <div class="text">
-            <h2>You can do anything you set your mind to!</h2>
-            <p>Dont break the chain!</p>
-          </div>
-        </div>
-        <div class="article bo-horizontal">
-          <div class="icons">
-            <i class="fa fa-info-circle"></i>
-            <i class="fa fa-star-o"></i>
-            <i class="fa fa-heart"></i>
-          </div>
-          <div class="text">
-            <h2>You can do anything you set your mind to!</h2>
-            <p>Dont break the chain!</p>
-          </div>
-        </div>
-        <div class="article horizontal">
-          <div class="icons">
-            <i class="fa fa-info-circle"></i>
-            <i class="fa fa-star-o"></i>
-            <i class="fa fa-heart"></i>
-          </div>
-          <div class="text">
-            <h2>You can do anything you set your mind to!</h2>
-            <p>Dont break the chain!</p>
+            <h2 style="background-color: rgb(0, 0, 0,0.5);"><%=trendingPics.Heading7%> </h2>
+           
           </div>
         </div>
 
-        <div class="article">
+        <div style="background-image: url('https://drive.google.com/uc?export=view&id=<%=trendingPics.Image8ID.slice(32,65)%>');" class="article">
           <div class="icons">
             <i class="fa fa-info-circle"></i>
             <i class="fa fa-star-o"></i>
             <i class="fa fa-heart"></i>
           </div>
           <div class="text">
-            <h2>You can do anything you set your mind to!</h2>
-            <p>Dont break the chain!</p>
+            <h2 style="background-color: rgb(0, 0, 0,0.5);"><%=trendingPics.Heading8%> </h2>
+           
           </div>
         </div>
-        <div class="article vertical">
+        <div style="background-image: url('https://drive.google.com/uc?export=view&id=<%=trendingPics.Image9ID.slice(32,65)%>');" class="article vertical">
           <div class="icons">
             <i class="fa fa-info-circle"></i>
             <i class="fa fa-star-o"></i>
             <i class="fa fa-heart"></i>
           </div>
           <div class="text">
-            <h2>You can do anything you set your mind to!</h2>
-            <p>Dont break the chain!</p>
+            <h2 style="background-color: rgb(0, 0, 0,0.5);"><%=trendingPics.Heading9%> </h2>
+           
           </div>
 
         </div>
-        <div class="article r-vertical">
+        <div style="background-image: url('https://drive.google.com/uc?export=view&id=<%=trendingPics.Image10ID.slice(32,65)%>');" class="article r-vertical">
           <div class="icons">
             <i class="fa fa-info-circle"></i>
             <i class="fa fa-star-o"></i>
             <i class="fa fa-heart"></i>
           </div>
           <div class="text">
-            <h2>You can do anything you set your mind to!</h2>
-            <p>Dont break the chain!</p>
+            <h2 style="background-color: rgb(0, 0, 0,0.5);"><%=trendingPics.Heading10%> </h2>
+           
           </div>
         </div>
-        <div class="article r-vertical">
+        <div style="background-image: url('https://drive.google.com/uc?export=view&id=<%=trendingPics.Image11ID.slice(32,65)%>');" class="article r-vertical">
           <div class="icons">
             <i class="fa fa-info-circle"></i>
             <i class="fa fa-star-o"></i>
             <i class="fa fa-heart"></i>
           </div>
           <div class="text">
-            <h2>You can do anything you set your mind to!</h2>
-            <p>Dont break the chain!</p>
+            <h2 style="background-color: rgb(0, 0, 0,0.5);"><%=trendingPics.Heading11%> </h2>
+           
           </div>
         </div>
-        <div class="article r-vertical">
+        <div style="background-image: url('https://drive.google.com/uc?export=view&id=<%=trendingPics.Image12ID.slice(32,65)%>');" class="article r-vertical">
           <div class="icons">
             <i class="fa fa-info-circle"></i>
             <i class="fa fa-star-o"></i>
             <i class="fa fa-heart"></i>
           </div>
           <div class="text">
-            <h2>You can do anything you set your mind to!</h2>
-            <p>Dont break the chain!</p>
+            <h2  style="background-color: rgb(0, 0, 0,0.5);"><%=trendingPics.Heading12%> </h2>
+           
           </div>
         </div>
-        <div class="article r-vertical">
+        <div style="background-image: url('https://drive.google.com/uc?export=view&id=<%=trendingPics.Image13ID.slice(32,65)%>');" class="article r-vertical">
           <div class="icons">
             <i class="fa fa-info-circle"></i>
             <i class="fa fa-star-o"></i>
             <i class="fa fa-heart"></i>
           </div>
           <div class="text">
-            <h2>You can do anything you set your mind to!</h2>
-            <p>Dont break the chain!</p>
+            <h2 style="background-color: rgb(0, 0, 0,0.5);"><%=trendingPics.Heading13%> </h2>
+           
           </div>
         </div>
-        <div class="article bo-horizontal">
-          <div class="icons">
-            <i class="fa fa-info-circle"></i>
-            <i class="fa fa-star-o"></i>
-            <i class="fa fa-heart"></i>
-          </div>
-          <div class="text">
-            <h2>You can do anything you set your mind to!</h2>
-            <p>You should go through the minimalist way It will become a habit, After that you'll be able to towards
-              your goals. <a href="#">Click Here</a></p>
-          </div>
-        </div>
-        <div class="article bo-horizontal">
-          <div class="icons">
-            <i class="fa fa-info-circle"></i>
-            <i class="fa fa-star-o"></i>
-            <i class="fa fa-heart"></i>
-          </div>
-          <div class="text">
-            <h2>You can do anything you set your mind to!</h2>
-            <p>Dont break the chain!</p>
-          </div>
-        </div>
-        <div class="article">
-          <div class="icons">
-            <i class="fa fa-info-circle"></i>
-            <i class="fa fa-star-o"></i>
-            <i class="fa fa-heart"></i>
-          </div>
-          <div class="text">
-            <h2>You can do anything you set your mind to!</h2>
-            <p>Dont break the chain!</p>
-          </div>
-        </div>
-        <div class="article vertical">
-          <div class="icons">
-            <i class="fa fa-info-circle"></i>
-            <i class="fa fa-star-o"></i>
-            <i class="fa fa-heart"></i>
-          </div>
-          <div class="text">
-            <h2>You can do anything you set your mind to!</h2>
-            <p>Dont break the chain!</p>
-          </div>
-
-        </div>
-        <div class="article r-vertical">
-          <div class="icons">
-            <i class="fa fa-info-circle"></i>
-            <i class="fa fa-star-o"></i>
-            <i class="fa fa-heart"></i>
-          </div>
-          <div class="text">
-            <h2>You can do anything you set your mind to!</h2>
-            <p>Dont break the chain!</p>
-          </div>
-        </div>
-        <div class="article r-vertical">
-          <div class="icons">
-            <i class="fa fa-info-circle"></i>
-            <i class="fa fa-star-o"></i>
-            <i class="fa fa-heart"></i>
-          </div>
-          <div class="text">
-            <h2>You can do anything you set your mind to!</h2>
-            <p>Dont break the chain!</p>
-          </div>
-        </div>
-        <div class="article r-vertical">
-          <div class="icons">
-            <i class="fa fa-info-circle"></i>
-            <i class="fa fa-star-o"></i>
-            <i class="fa fa-heart"></i>
-          </div>
-          <div class="text">
-            <h2>You can do anything you set your mind to!</h2>
-            <p>Dont break the chain!</p>
-          </div>
-        </div>
-        <div class="article bo-horizontal">
-          <div class="icons">
-            <i class="fa fa-info-circle"></i>
-            <i class="fa fa-star-o"></i>
-            <i class="fa fa-heart"></i>
-          </div>
-          <div class="text">
-            <h2>You can do anything you set your mind to!</h2>
-            <p>Dont break the chain!</p>
-          </div>
-        </div>
-        <div class="article horizontal">
-          <div class="icons">
-            <i class="fa fa-info-circle"></i>
-            <i class="fa fa-star-o"></i>
-            <i class="fa fa-heart"></i>
-          </div>
-          <div class="text">
-            <h2>You can do anything you set your mind to!</h2>
-            <p>Dont break the chain!</p>
-          </div>
-        </div>
-
-        <div class="article">
-          <div class="icons">
-            <i class="fa fa-info-circle"></i>
-            <i class="fa fa-star-o"></i>
-            <i class="fa fa-heart"></i>
-          </div>
-          <div class="text">
-            <h2>You can do anything you set your mind to!</h2>
-            <p>Dont break the chain!</p>
-          </div>
-        </div>
-        <div class="article vertical">
-          <div class="icons">
-            <i class="fa fa-info-circle"></i>
-            <i class="fa fa-star-o"></i>
-            <i class="fa fa-heart"></i>
-          </div>
-          <div class="text">
-            <h2>You can do anything you set your mind to!</h2>
-            <p>Dont break the chain!</p>
-          </div>
-
-        </div>
-        <div class="article r-vertical">
-          <div class="icons">
-            <i class="fa fa-info-circle"></i>
-            <i class="fa fa-star-o"></i>
-            <i class="fa fa-heart"></i>
-          </div>
-          <div class="text">
-            <h2>You can do anything you set your mind to!</h2>
-            <p>Dont break the chain!</p>
-          </div>
-        </div>
-        <div class="article r-vertical">
-          <div class="icons">
-            <i class="fa fa-info-circle"></i>
-            <i class="fa fa-star-o"></i>
-            <i class="fa fa-heart"></i>
-          </div>
-          <div class="text">
-            <h2>You can do anything you set your mind to!</h2>
-            <p>Dont break the chain!</p>
-          </div>
-        </div>
-        <div class="article r-vertical">
-          <div class="icons">
-            <i class="fa fa-info-circle"></i>
-            <i class="fa fa-star-o"></i>
-            <i class="fa fa-heart"></i>
-          </div>
-          <div class="text">
-            <h2>You can do anything you set your mind to!</h2>
-            <p>Dont break the chain!</p>
-          </div>
-        </div>
-        <div class="article r-vertical">
-          <div class="icons">
-            <i class="fa fa-info-circle"></i>
-            <i class="fa fa-star-o"></i>
-            <i class="fa fa-heart"></i>
-          </div>
-          <div class="text">
-            <h2>You can do anything you set your mind to!</h2>
-            <p>Dont break the chain!</p>
-          </div>
-        </div>
-        <div class="article bo-horizontal">
-          <div class="icons">
-            <i class="fa fa-info-circle"></i>
-            <i class="fa fa-star-o"></i>
-            <i class="fa fa-heart"></i>
-          </div>
-          <div class="text">
-            <h2>You can do anything you set your mind to!</h2>
-            <p>You should go through the minimalist way It will become a habit, After that you'll be able to towards
-              your goals. <a href="#">Click Here</a></p>
-          </div>
-        </div>
-        <div class="article bo-horizontal">
-          <div class="icons">
-            <i class="fa fa-info-circle"></i>
-            <i class="fa fa-star-o"></i>
-            <i class="fa fa-heart"></i>
-          </div>
-          <div class="text">
-            <h2>You can do anything you set your mind to!</h2>
-            <p>Dont break the chain!</p>
-          </div>
-        </div>
-        <div class="article">
-          <div class="icons">
-            <i class="fa fa-info-circle"></i>
-            <i class="fa fa-star-o"></i>
-            <i class="fa fa-heart"></i>
-          </div>
-          <div class="text">
-            <h2>You can do anything you set your mind to!</h2>
-            <p>Dont break the chain!</p>
-          </div>
-        </div>
-        <div class="article vertical">
-          <div class="icons">
-            <i class="fa fa-info-circle"></i>
-            <i class="fa fa-star-o"></i>
-            <i class="fa fa-heart"></i>
-          </div>
-          <div class="text">
-            <h2>You can do anything you set your mind to!</h2>
-            <p>Dont break the chain!</p>
-          </div>
-
-        </div>
-        <div class="article r-vertical">
-          <div class="icons">
-            <i class="fa fa-info-circle"></i>
-            <i class="fa fa-star-o"></i>
-            <i class="fa fa-heart"></i>
-          </div>
-          <div class="text">
-            <h2>You can do anything you set your mind to!</h2>
-            <p>Dont break the chain!</p>
-          </div>
-        </div>
-        <div class="article r-vertical">
-          <div class="icons">
-            <i class="fa fa-info-circle"></i>
-            <i class="fa fa-star-o"></i>
-            <i class="fa fa-heart"></i>
-          </div>
-          <div class="text">
-            <h2>You can do anything you set your mind to!</h2>
-            <p>Dont break the chain!</p>
-          </div>
-        </div>
-        <div style="background-image: url('../static/img/newImages/Claire.png');" class="article r-vertical">
-          <div class="icons">
-            <i class="fa fa-info-circle"></i>
-            <i class="fa fa-star-o"></i>
-            <i class="fa fa-heart"></i>
-          </div>
-          <div class="text">
-            <h2>You can do anything you set your mind to!</h2>
-            <p>Dont break the chain!</p>
-          </div>
-        </div>
-        <div class="article bo-horizontal">
-          <div class="icons">
-            <i class="fa fa-info-circle"></i>
-            <i class="fa fa-star-o"></i>
-            <i class="fa fa-heart"></i>
-          </div>
-          <div class="text">
-            <h2>You can do anything you set your mind to!</h2>
-            <p>Dont break the chain!</p>
-          </div>
-        </div>
-        <div class="article horizontal">
-          <div class="icons">
-            <i class="fa fa-info-circle"></i>
-            <i class="fa fa-star-o"></i>
-            <i class="fa fa-heart"></i>
-          </div>
-          <div class="text">
-            <h2>You can do anything you set your mind to!</h2>
-            <p>Dont break the chain!</p>
-          </div>
-        </div>
-
-        <div class="article">
-          <div class="icons">
-            <i class="fa fa-info-circle"></i>
-            <i class="fa fa-star-o"></i>
-            <i class="fa fa-heart"></i>
-          </div>
-          <div class="text">
-            <h2>You can do anything you set your mind to!</h2>
-            <p>Dont break the chain!</p>
-          </div>
-        </div>
-        <div class="article vertical">
-          <div class="icons">
-            <i class="fa fa-info-circle"></i>
-            <i class="fa fa-star-o"></i>
-            <i class="fa fa-heart"></i>
-          </div>
-          <div class="text">
-            <h2>You can do anything you set your mind to!</h2>
-            <p>Dont break the chain!</p>
-          </div>
-
-        </div>
-        <div class="article r-vertical">
-          <div class="icons">
-            <i class="fa fa-info-circle"></i>
-            <i class="fa fa-star-o"></i>
-            <i class="fa fa-heart"></i>
-          </div>
-          <div class="text">
-            <h2>You can do anything you set your mind to!</h2>
-            <p>Dont break the chain!</p>
-          </div>
-        </div>
-        <div class="article r-vertical">
-          <div class="icons">
-            <i class="fa fa-info-circle"></i>
-            <i class="fa fa-star-o"></i>
-            <i class="fa fa-heart"></i>
-          </div>
-          <div class="text">
-            <h2>You can do anything you set your mind to!</h2>
-            <p>Dont break the chain!</p>
-          </div>
-        </div>
-        <div class="article r-vertical">
-          <div class="icons">
-            <i class="fa fa-info-circle"></i>
-            <i class="fa fa-star-o"></i>
-            <i class="fa fa-heart"></i>
-          </div>
-          <div class="text">
-            <h2>You can do anything you set your mind to!</h2>
-            <p>Dont break the chain!</p>
-          </div>
-        </div>
-        <div class="article r-vertical">
-          <div class="icons">
-            <i class="fa fa-info-circle"></i>
-            <i class="fa fa-star-o"></i>
-            <i class="fa fa-heart"></i>
-          </div>
-          <div class="text">
-            <h2>You can do anything you set your mind to!</h2>
-            <p>Dont break the chain!</p>
-          </div>
-        </div>
-        <div class="article bo-horizontal">
-          <div class="icons">
-            <i class="fa fa-info-circle"></i>
-            <i class="fa fa-star-o"></i>
-            <i class="fa fa-heart"></i>
-          </div>
-          <div class="text">
-            <h2>You can do anything you set your mind to!</h2>
-            <p>You should go through the minimalist way It will become a habit, After that you'll be able to towards
-              your goals. <a href="#">Click Here</a></p>
-          </div>
-        </div>
-        <div class="article bo-horizontal">
-          <div class="icons">
-            <i class="fa fa-info-circle"></i>
-            <i class="fa fa-star-o"></i>
-            <i class="fa fa-heart"></i>
-          </div>
-          <div class="text">
-            <h2>You can do anything you set your mind to!</h2>
-            <p>Dont break the chain!</p>
-          </div>
-        </div>
-
+        <% })} %> 
       </main>
 
 
@@ -1642,8 +482,8 @@
                   href="http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes">Contact</a>
               </li>
               <li><a class="g-font-size-15--xs g-color--white-opacity"
-                href="http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes">Advertise</a>
-            </li>
+                  href="http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes">Advertise</a>
+              </li>
             </ul>
           </div>
           <div class="col-sm-2 g-margin-b-20--xs g-margin-b-0--md">

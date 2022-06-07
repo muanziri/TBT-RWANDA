@@ -255,7 +255,7 @@ function createDownloadLink(blob) {
       }
       document.getElementById("progressBar").value = 50 - timeleft;
       timeleft -= 1;
-      console.log(timeleft)
+      
     }, 1000);
    
        }
@@ -269,7 +269,7 @@ function createDownloadLink(blob) {
 		  }
 		  document.getElementById("progressBar2").value = 90 - timeleft2;
 		  timeleft2 -= 1;
-		  console.log(timeleft2)
+		  
 		}, 1000);
 	   
 		   }  
