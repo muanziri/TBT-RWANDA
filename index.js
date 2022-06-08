@@ -5,8 +5,11 @@ const multer=require('multer')
 const mongoose=require('mongoose');
 const passport=require('passport')
 const latestShowBizz=require('./model/latestShowbizz')
+const messageFromUser=require('./model/messageFromUser')
+const UserModel=require('./model/UserModel')
 const NewUrlTobeShared=require('./model/urlForMoney')
 const UserRecording=require('./model/ibitekerezo')
+const forMoney=require('./model/urlForMoney')
 const gossipAndNews=require('./model/gossipAndNews')
 //var MemoryFileSystem = require("memory-fs")
 const showbizzTrendings=require('./model/showbizzTrendingPics')
@@ -72,6 +75,7 @@ app.get('/auth/google/failure',(req,res)=>{
 })
 
 app.get('/',(req,res)=>{
+  
   latestShowBizz.find().then((results)=>{
     gossipAndNews.find().then((results2)=>{
       showbizzTrendings.find().then((results3)=>{
@@ -167,6 +171,7 @@ app.post('/NewUrlTobeShared',(req,res)=>{
    UrlTobeShared:req.body.NewUrlTobeSharedred
   }).save().then((results)=>{
     console.log('the url is kept')
+    res.redirect('/Admindashbaord')
   }).catch((error)=>{
     if(error) throw error
   })
@@ -189,7 +194,34 @@ app.get('/dashboard',(req,res)=>{
 app.get('/talkToUs',(req,res)=>{
     res.render('talkToUs')
 })
-
+app.post('/sendMessageUser',(req,res)=>{
+ new messageFromUser({
+  Name:   req.body.Name,
+  Phone:  req.body.Phone,
+  Email:  req.body.Email,
+  message:req.body.message
+ }).save().then(()=>{
+   res.redirect('/talkToUs')
+ })
+})
+app.post('/addlikes',(req,res,next)=>{
+  UserRecording.findOne({AudioId:req.body.addlikestRecorded}).then((result)=>{
+    let newLike=result.likes+1
+    UserRecording.updateOne({AudioId:req.body.addlikestRecorded},{likes:newLike}).then(()=>{
+      //console.log('like added')
+    })
+  })
+  UserModel.findOne({userName:req.body.addlikestouser}).then((result)=>{
+    let newLike=result.TotalNumberOfLikes+1
+    UserModel.updateOne({userName:req.body.addlikestouser},{TotalNumberOfLikes:newLike}).then(()=>{
+      //console.log('like added')
+     // res.sendStatus(200)
+     req.fresh
+      
+    })
+  })
+  
+})
 app.get('/BlogPostControl',(req,res)=>{
     res.render('BlogPostControl')
 })
@@ -311,16 +343,24 @@ app.get('/login',(req,res)=>{
 app.post('/news',(req,res)=>{
     
 })
-// app.post('/:UserId',async (req,res)=>{
+app.get('/share/:UserId',async (req,res)=>{
+   console.log(req.params.UserId)
+  const User = await UserModel.findOne({ short: req.params.UserId})
+  forMoney.find().then((results)=>{
+    if (User == null) return res.sendStatus(404)
 
-//   const User = await UserModel.findOne({ short: req.params.UserId})
-//   if (User == null) return res.sendStatus(404)
+    User.Clicks++
+    User.save()
+    let theResults=results[0]
+    let url=theResults.UrlTobeShared
+   let newclicks=theResults.clicks+1
+   console.log(newclicks)
+    forMoney.findOneAndUpdate({ UrlTobeShared:url},{clicks:newclicks},()=>{ console.log('updated')   })
+    res.redirect(theResults.UrlTobeShared)
 
-//   User.Clicks++
-//   User.save()
-
-//   res.redirect(User)
-// })
+    
+  })
+})
 app.post('/innitiate',upload.any(),async (req,res)=>{
    
     let files = req.files;
@@ -330,7 +370,7 @@ app.post('/innitiate',upload.any(),async (req,res)=>{
     fs.writeFileSync(stringedFilePath,  files[0].buffer);
 })
 app.get('/logout', function(req, res){
-    req.logOut()
+  req.logout();
     res.redirect('/');
   });
 app.post('/ToTheDrive',upload.any(), (req,res)=>{
@@ -380,8 +420,29 @@ uploadToTheDrivePodCast(fileMetadata,media,stringedFilePath,user,folderId)
   
 })
 app.get('/Admindashbaord',(req,res)=>{
-    res.render('Admindashbaord')
+  forMoney.find().then((results)=>{
+    UserModel.find().then((results2)=>{
+      genesis.find().then((results3)=>{
+        messageFromUser.find().then((results4)=>{
+          res.render('Admindashbaord',{sharedLinks:results,Users:results2,podCasts:results3,messageFromUser:results4})
+        })
+    })
+    })
+  })
+    
 })
+app.post('/deleteThemessage/:name',(req,res)=>{
+  let name=req.params.name;
+  messageFromUser.findOneAndDelete({Name:name},(results)=>{
+    console.log('deleted')
+    res.redirect('/Admindashbaord')
+})})
+app.post('/deleteUser',(req,res)=>{
+  let name=req.body.userName;
+  UserModel.findOneAndDelete({userName:name},(results)=>{
+    console.log('deleted')
+    res.redirect('/Admindashbaord')
+})})
 app.post('/ToTheDriveImages',upload.any(), (req,res)=>{
    
     let files=req.files
@@ -399,8 +460,8 @@ app.post('/ToTheDriveImages',upload.any(), (req,res)=>{
           };   
   uploadToTheDriveImage(fileMetadata,media,stringedFilePath,user)
 })
-
-app.listen(4000,()=>{
+let port=process.env.PORT||4000
+app.listen(port,()=>{
     console.log('heard from 4000');
 })
 

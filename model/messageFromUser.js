@@ -4,14 +4,21 @@ const Schema = mongoose.Schema
 const newsSchema = new Schema({
 
   
-  UrlTobeShared: {
+    Name: {
     type:String,
     required:true
   },
-  clicks: {
-    type:Number,
-    required:true,
-    default:0
+  Email: {
+    type:String,
+    required:true
+  },
+  Phone: {
+    type:String,
+    required:true
+  },
+  message: {
+    type:String,
+    required:true
   },
   Date:{
         type: Date,
@@ -22,6 +29,6 @@ const newsSchema = new Schema({
 
 })
 
-const UserModel=mongoose.model('UrlTobeShared',newsSchema);
+const UserModel=mongoose.model('messageFromUser',newsSchema);
 
 module.exports=UserModel;

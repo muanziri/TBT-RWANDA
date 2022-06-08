@@ -38,7 +38,7 @@
 <body>
 
   <!--========== HEADER ==========-->
-  <header
+  <header id="headerbura"
     style="background-image: linear-gradient(to right ,white,chocolate); border-radius:  0px  0px 15px 15px;z-index: 0;"
     class="navbar-fixed-top s-header js__header-overlay">
     <!-- Navbar -->
@@ -95,16 +95,22 @@
             <li class="s-header__nav-menu-item"><a
                 class="s-header__nav-menu-link s-header__nav-menu-link-divider -is-active" href="/">news</a></li>
             <li class="s-header__nav-menu-item"><a class="s-header__nav-menu-link s-header__nav-menu-link-divider "
-                href="/commingSoon">comming soon</a>
+                href="/login">Create account</a>
             </li>
             <li class="s-header__nav-menu-item"><a class="s-header__nav-menu-link s-header__nav-menu-link-divider "
-                href="#">Home</a></li>
+              href="/talkToUs">talk to us</a>
+          </li>
             <li class="s-header__nav-menu-item"><a class="s-header__nav-menu-link s-header__nav-menu-link-divider "
-                href="#">follow us Facebook </a></li>
+              href="/login">login</a>
+          </li>
             <li class="s-header__nav-menu-item"><a class="s-header__nav-menu-link s-header__nav-menu-link-divider "
-                href="#">follow us Instagram</a></li>
+                href="/talkToUs"></a></li>
             <li class="s-header__nav-menu-item"><a class="s-header__nav-menu-link s-header__nav-menu-link-divider "
-                href="#">foow us Twitter </a>
+              onclick="GosssipNewsShow()">Gossip and news</a></li>
+            <li class="s-header__nav-menu-item"><a class="s-header__nav-menu-link s-header__nav-menu-link-divider "
+              onclick="latestShowbizzShow()">latest showbizz</a></li>
+            <li class="s-header__nav-menu-item"><a class="s-header__nav-menu-link s-header__nav-menu-link-divider "
+              onclick="showbizzTrendingNewsShow()">showbizz trending pics</a>
             </li>
 
 
@@ -556,7 +562,7 @@
   <script type="text/javascript" src="../static/vendor/jquery.smooth-scroll.min.js"></script>
   <script type="text/javascript" src="../static/vendor/jquery.back-to-top.min.js"></script>
   <script type="text/javascript" src="../static/vendor/scrollbar/jquery.scrollbar.min.js"></script>
-
+  <script type="text/javascript" src="../static/js/commonjs.js"></script>
   <!-- General Components and Settings -->
   <script type="text/javascript" src="../static/js/global.min.js"></script>
   <script type="text/javascript" src="../static/js/components/header-sticky.min.js"></script>

@@ -21,7 +21,7 @@
   </style>
 </head>
 
-<body class="w3-light-grey">
+<body  class="w3-light-grey">
 
 
 
@@ -29,7 +29,7 @@
 
 
   <!-- !PAGE CONTENT! -->
-  <div class="w3-main">
+  <div  class="w3-main">
 
     <!-- Header -->
     <header class="w3-container" style="padding-top:22px">
@@ -40,7 +40,7 @@
         <div class="w3-container w3-black w3-padding-16">
           <div class="w3-left"><i class="fa fa-comment w3-xxxlarge"></i></div>
           <div class="w3-right">
-            <h3>52</h3>
+            <h3><%=messageFromUser.length%></h3>
           </div>
           <div class="w3-clear"></div>
           <h4>Messages</h4>
@@ -51,17 +51,22 @@
         <div class="w3-container w3-black w3-padding-16">
           <div class="w3-left"><i class="fa fa-share-alt w3-xxxlarge"></i></div>
           <div class="w3-right">
-            <h3>23</h3>
+            <h3><% var total = 0;
+            sharedLinks.forEach(arg => {
+              total += arg.clicks;
+            });
+            
+        %><%=total%> </h3>
           </div>
           <div class="w3-clear"></div>
-          <h4>Total Shares</h4>
+          <h4>total clicks from links</h4>
         </div>
       </div>
       <div class="w3-quarter">
         <div class="w3-container w3-black w3-text-white w3-padding-16">
           <div class="w3-left"><i class="fa fa-users w3-xxxlarge"></i></div>
           <div class="w3-right">
-            <h3>50</h3>
+            <h3><%=Users.length%></h3>
           </div>
           <div class="w3-clear"></div>
           <h4>Users</h4>
@@ -69,42 +74,26 @@
       </div>
     </div>
     <br>
-    
+
     <div class="w3-container w3-half w3-margin-top">
       <div class="w3-container w3-card-4">
 
-        <button class="w3-button w3-section w3-teal w3-ripple">News (new edition)</button>
+       <a href="/BlogPostControl"><button class="w3-button w3-section w3-teal w3-ripple">News (new edition)</button></a>
         <br>
-        <button class="w3-button w3-section w3-teal w3-ripple">Podcat (new edition)</button>
+        <a href="/PodcastControl"><button class="w3-button w3-section w3-teal w3-ripple">Podcat (new edition)</button></a>
 
       </div>
 
     </div>
-  
+
     <!-- Footer -->
-    <div class="w3-container w3-half w3-margin-top">
-      <h3>authorise the user to be Main participant in ikiganiro</h3>
-      <form class="w3-container w3-card-4">
-        <br>
-        <br>
-        <input class="w3-input" type="text" style="width:90%" required>
-        <label>name</label></p>
 
-
-
-        <p>
-          <button class="w3-button w3-section w3-teal w3-ripple"> Authorise </button>
-        </p>
-
-      </form>
-
-    </div>
     <div class="w3-container w3-half w3-margin-top">
       <h3>Post the links to be shared</h3>
-      <form class="w3-container w3-card-4">
+      <form method="post" action="/NewUrlTobeShared" class="w3-container w3-card-4">
 
         <p>
-          <input class="w3-input" type="text" style="width:90%" required>
+          <input class="w3-input" type="text" name="NewUrlTobeSharedred" style="width:90%" required>
           <label>Link for sharing</label>
         </p>
 
@@ -116,20 +105,28 @@
         </p>
 
       </form>
-      <h3>Links that are being shared and number of clicks</h3>
     </div>
     <div class="w3-container w3-half w3-margin-top">
-      <h3>Delete the User</h3>
-      <form class="w3-container w3-card-4">
-
-        <p>
-          <input class="w3-input" type="text" style="width:90%" required>
-          <label>name and Delete the user</label>
+      <h3>Links that are being shared and number of clicks</h3>
+      <div class="w3-container w3-card-4">
+        <ol>
+          <% sharedLinks.forEach(element=> {%>
+            <li>
+              <%=element.UrlTobeShared%>    <b>clicks <%=element.clicks%></b></li>
+            <%}); %>
+        </ol>
         </p>
 
+      </div>
+    </div>
 
-
-
+    <div class="w3-container w3-half w3-margin-top">
+      <h3>Delete the User</h3>
+      <form action="/deleteUser" method="post" class="w3-container w3-card-4">
+        <p>
+          <input class="w3-input" type="text" name="userName" style="width:90%" required>
+          <label>name and Delete the user</label>
+        </p>
         <p>
           <button class="w3-button w3-section w3-teal w3-ripple">delete the user </button>
         </p>
@@ -138,62 +135,57 @@
 
     </div>
 
-    <div class="w3-container w3-half w3-margin-top">
-      <h3>Give Notice to the User</h3>
-      <form class="w3-container w3-card-4">
-        <p>
-          <input class="w3-input" type="text" style="width:90%" required>
-          <label>Name the user</label>
-        </p>
-        <p>
-          <textarea class="w3-input" type="text" style="width:90%" required></textarea>
-          <label>write your message here</label>
-        </p>
-
-
-
-
-        <p>
-          <button class="w3-button w3-section w3-teal w3-ripple">send the message</button>
-        </p>
-
-      </form>
-
-    </div>
-    <div class="w3-container w3-half w3-margin-top">
+    <div style="max-height: 1000px;overflow-y:scroll;" class="w3-container w3-half w3-margin-top">
       <h3>Messages from Users</h3>
-      
+      <div class="w3-container w3-card-4">
+        <ol>
+          <% messageFromUser.forEach(element=> {%>
+            <li>
+              <h4><b>Name :<%=element.Name%></b</h4>    
+              <h4><b>Phone :<%=element.Phone%></b></h4>   
+              <h4><b>email :<%=element.Email%></b></h4>
+              <p>Message</p>
+              <h5><%=element.message%></h5>
+              <form action="/deleteThemessage/<%=element.Name%>" method="post">
+                <button class="w3-button w3-section w3-teal w3-ripple">delete</button>
+              </form>
+              
+            </li>
+            <%}); %>
+        </ol>
+        </p>
+
+      </div>
 
     </div>
-   
+    <div style="max-height: 1000px;overflow-y:scroll;" class="w3-container w3-half w3-margin-top">
+      <h3>Users and the clicks collected and likes collected</h3>
+      <div class="w3-container w3-card-4">
+        <ol>
+          <% Users.forEach(element=> {%>
+            <li>
+              <%=element.userName%>    <b>clicks <%=element.Clicks%></b>   <b>likes <%=element.TotalNumberOfLikes%></b></li>
+            <%}); %>
+        </ol>
+        </p>
 
+      </div>
+    </div>
+    <div class="w3-container w3-half w3-margin-top">
+      
+    </div>
+    <div class="w3-container w3-half w3-margin-top">
+      
+    </div>
+    
+
+    
     <!-- End page content -->
   </div>
+  
 
-  <script>
-    // Get the Sidebar
-    var mySidebar = document.getElementById("mySidebar");
+ 
 
-    // Get the DIV with overlay effect
-    var overlayBg = document.getElementById("myOverlay");
-
-    // Toggle between showing and hiding the sidebar, and add overlay effect
-    function w3_open() {
-      if (mySidebar.style.display === 'block') {
-        mySidebar.style.display = 'none';
-        overlayBg.style.display = "none";
-      } else {
-        mySidebar.style.display = 'block';
-        overlayBg.style.display = "block";
-      }
-    }
-
-    // Close the sidebar with the close button
-    function w3_close() {
-      mySidebar.style.display = "none";
-      overlayBg.style.display = "none";
-    }
-  </script>
 
 </body>
 
