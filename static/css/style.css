@@ -1440,7 +1440,7 @@ fieldset[disabled] .s-btn {
   margin-right: 0;
 }
 
-@media (max-width: 47.9em) {
+@media (max-width: 65.5em) {
   .s-header__nav-menu {
     width: 50%;
   }
