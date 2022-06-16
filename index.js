@@ -301,16 +301,27 @@ app.post('/PodcastControlInnitiate',upload.any(),(req,res)=>{
     fs.writeFileSync(stringedFilePath,  files[0].buffer);
 
 })
+// app.post('/DirectPodcastControlInnitiate',upload.any(),(req,res)=>{
+
+//   let files = req.files;
+//   let filepath="audioUploads/";
+//   let originalname=files[0].originalname
+//   let stringedFilePath=filepath+originalname;
+//   fs.writeFileSync(stringedFilePath,  files[0].buffer);
+
+// })
+const Readable = require('stream').Readable; 
+
+function bufferToStream(buffer) { 
+  var stream = new Readable();
+  stream.push(buffer);
+  stream.push(null);
+
+  return stream;
+}
 app.post('/DirectPodcastControlInnitiate',upload.any(),(req,res)=>{
+ 
 
-  let files = req.files;
-  let filepath="audioUploads/";
-  let originalname=files[0].originalname
-  let stringedFilePath=filepath+originalname;
-  fs.writeFileSync(stringedFilePath,  files[0].buffer);
-
-})
-app.post('/PodcastControlUpload',upload.any(),(req,res)=>{
     let files=req.files
     let filepath="./audioUploads/";
     let originalname=files[0].originalname+'.aac'
@@ -322,7 +333,7 @@ app.post('/PodcastControlUpload',upload.any(),(req,res)=>{
       };
       var media = {
             mimeType: 'audio/aac',
-           body: fs.createReadStream(path.join(__dirname, stringedFilePath))
+            body: bufferToStream(req.file.buffer)
           };   
     uploadToTheDrivePodCastGenesis(fileMetadata,media,stringedFilePath,folderIds,originalname,)
    res.redirect('/Admindashbaord');
